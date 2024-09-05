@@ -25,7 +25,7 @@
          </ul>
       </nav>
       <div class="user-online-container">
-         <img class="user-profile-image" src="/assets/imgs/user.jpg" width="200px" alt="">
+         <img class="user-profile-image" src="<%= profile_image_url %>" width="200px" alt="">
       </div>
       <div class="expand-menu-container">
          <button onclick="toggleNavigationBar()">
@@ -37,12 +37,18 @@
       <div class="profile-sidebar-container">
          <div class="user-banner-profile-img-title-container">
             <img class="user-profile-banner-image" src="/assets/imgs/banner.jpg" alt="">
-            <img class="user-profile-image" src="/assets/imgs/user.jpg" width="200px" alt="">
-            <h2 class="user-fullname">James Elijah</h2>
+            <img class="user-profile-image" src="<%= profile_image_url %>" width="200px" alt="">
+            <h2 class="user-fullname">
+               <%= user.first_name  %> <%= user.last_name  %>
+            </h2>
          </div>
          <div class="about-me-container">
             <h3>About Me:</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima suscipit et asperiores iure nobis accusantium nam perferendis, pariatur labore, eius aliquam illo error in eum. Omnis repellendus non eveniet cumque!</p>
+            <% if (user.description != null) { %>
+               <p><%= user.description %></p>
+            <% } else { %>
+               <p>No Description...</p>
+            <% } %>
          </div>
          <div class="socials-container">
             <h3>Socials:</h3>
@@ -55,11 +61,11 @@
                </span>
                <span class="user-email">
                   <i class="fa-solid fa-envelope"></i>
-                  <span>james.elijah1996@gmail.com</span>
+                  <span><%= user.email %></span>
                </span>
                <span class="user-phone">
                   <i class="fa-solid fa-phone"></i>
-                  <span>6921496375</span>
+                  <span><%= user.phone_number %></span>
                </span>
             </div>
          </div>
@@ -89,8 +95,8 @@
       <div class="create-post-container">
          <h2>Create New Post</h2>
          <div class="user-profile">
-            <img class="user-profile-imge" src="/assets/imgs/user.jpg" alt="">
-            <h3 class="username">James Elijah</h3>
+            <img class="user-profile-imge" src="<%= profile_image_url %>" alt="">
+            <h3 class="username"><%= user.first_name %> <%= user.last_name %></h3>
          </div>
          <div class="create-post-main-input">
             <input class="title-input-field" name="post-title" id="post-title" placeholder="Post Title..."></input>

@@ -26,12 +26,12 @@
         </div>
         <div class="auth-main-content">
             <h1 class="main-content-message">Create an account</h1>
-            <form class="login-form" action="#" novalidate method="post">
+            <form class="login-form" action="/api/create_account" novalidate method="post">
                <div class="sign-up-main-content-inputs-container">
 
                   <div class="text-input-field-container fname-container">
                      <i class="input-icon fa-solid fa-user"></i>
-                     <input class="text-input-field" id="firstNameInput" type="email" placeholder="First Name" autocomplete="off" required onkeyup="validateFirstName()">
+                     <input name="firstName" class="text-input-field" id="firstNameInput" type="email" placeholder="First Name" autocomplete="off" required onkeyup="validateFirstName()">
                      <i class="success-icon fas fa-check-circle"></i>
                      <i class="error-icon fas fa-exclamation-circle"></i>
                      <div class="error-message"></div>
@@ -39,7 +39,7 @@
 
                   <div class="text-input-field-container lname-container">
                      <i class="input-icon fa-regular fa-user"></i>
-                     <input class="text-input-field" id="lastNameInput" type="text" placeholder="Last Name" autocomplete="off" required onkeyup="validateLastName()">
+                     <input name="lastName" class="text-input-field" id="lastNameInput" type="text" placeholder="Last Name" autocomplete="off" required onkeyup="validateLastName()">
                      <i class="success-icon fas fa-check-circle"></i>
                      <i class="error-icon fas fa-exclamation-circle"></i>
                      <div class="error-message"></div>
@@ -47,7 +47,7 @@
 
                   <div class="text-input-field-container email-container">
                      <i class="input-icon fa-solid fa-envelope"></i>
-                     <input class="text-input-field" id="emailInput" type="email" placeholder="Email" autocomplete="off" required onkeyup="validateEmail()">
+                     <input name="email" class="text-input-field" id="emailInput" type="email" placeholder="Email" autocomplete="off" required onkeyup="validateEmail()">
                      <i class="success-icon fas fa-check-circle"></i>
                      <i class="error-icon fas fa-exclamation-circle"></i>
                      <div class="error-message"></div>
@@ -55,7 +55,7 @@
 
                   <div class="text-input-field-container password-container">
                      <i class="input-icon fa-solid fa-lock"></i>
-                     <input class="text-input-field" id="passwordInput" type="password" placeholder="Password" autocomplete="off" required onkeyup="validatePassword()">
+                     <input name="password" class="text-input-field" id="passwordInput" type="password" placeholder="Password" autocomplete="off" required onkeyup="validatePassword()">
                      <i class="success-icon fas fa-check-circle"></i>
                      <i class="error-icon fas fa-exclamation-circle"></i>
                      <div class="error-message"></div>
@@ -63,7 +63,7 @@
 
                   <div class="text-input-field-container ver-password-container">
                      <i class="input-icon fa-solid fa-lock"></i>
-                     <input class="text-input-field" id="passwordVerificationInput" type="password" placeholder="Verify Password" autocomplete="off" required onkeyup="validatePasswordVerification()">
+                     <input name="passwordVerification" class="text-input-field" id="passwordVerificationInput" type="password" placeholder="Verify Password" autocomplete="off" required onkeyup="validatePasswordVerification()">
                      <i class="success-icon fas fa-check-circle"></i>
                      <i class="error-icon fas fa-exclamation-circle"></i>
                      <div class="error-message"></div>
@@ -71,7 +71,7 @@
 
                   <div class="text-input-field-container phone-container">
                      <i class="input-icon fa-solid fa-phone"></i>
-                     <input class="text-input-field" id="phoneInput" type="tel" placeholder="Phone Number" autocomplete="off" required onkeyup="validatePhoneNumber()">
+                     <input name="phoneNumber" class="text-input-field" id="phoneInput" type="tel" placeholder="Phone Number" autocomplete="off" required onkeyup="validatePhoneNumber()">
                      <i class="success-icon fas fa-check-circle"></i>
                      <i class="error-icon fas fa-exclamation-circle"></i>
                      <div class="error-message"></div>

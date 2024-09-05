@@ -2,31 +2,54 @@
 
 const express = require('express');
 const path = require('path');
-
 const app = express();
 
 // Set the view engine and the directory where HTML files are located
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+// Set up middleware
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const PORT = process.env.PORT || 8080; // Setup the port of the server
 
-app.get('/', (request, response) => {
-   response.render('login');
-});
+// Routes
+const authRoutes = require('./routes/auth_routes');
+const homeRoutes = require('./routes/home_routes');
 
-app.get('/login', (request, response) => {
-   response.render('login');
-});
+// Use routes
+app.use('/', authRoutes);
+app.use('/home', homeRoutes);
 
-app.get('/signup', (request, response) => {
-   response.render('signup');
-});
+// app.post('/api/create_account', (request, response) => {
 
-app.get('/home', (request, response) => {
-   response.status(201).render('home');
-});
+//    const firstName = request.body.firstName;
+//    const lastName = request.body.lastName;
+
+//    const email = request.body.email;
+//    const password = request.body.password;
+//    const passwordVerification = request.body.passwordVerification;
+   
+//    const phoneNumber = request.body.phoneNumber;
+
+//    // Receive all the emails in the database and check if there is a user with the given email
+//    const sqlEmailsQuery = "SELECT email FROM users WHERE email = ?";
+//    databaseConnectionPool.query(sqlEmailsQuery, [email], (error, results) => {
+//       if (error) {
+//          return response.status(500).send('Error creating account');
+//       }
+
+//       if (results.length > 0) {
+//          return response.send("Email Address already exists");
+//       }
+      
+//       response.redirect('/home');
+//    })
+
+// });
+
 
 // Start the server execution
 app.listen(PORT, () => {
