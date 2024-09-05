@@ -1,0 +1,50 @@
+@import url("config.css");
+@import url("input_field.css");
+
+/* Login form styling */
+
+.auth-main-content .login-form {
+   width: 85%;
+}
+
+/* Inputs container styling. Main style is grid layout */
+
+.auth-main-content .log-in-main-content-inputs-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+}
+.auth-main-content .sign-up-main-content-inputs-container {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-template-areas: 
+   "fname lname"
+   "email email"
+   "password password"
+   "verPassword verPassword"
+   "phone phone"
+   "gender gender";
+   column-gap: 20px;
+}
+.fname-container {
+   grid-area: fname;
+}
+.lname-container {
+   grid-area: lname;
+}
+.email-container {
+   grid-area: email;
+}
+.password-container {
+   grid-area: password;
+}
+.ver-password-container {
+   grid-area: verPassword;
+}
+.phone-container {
+   grid-area: phone;
+}
+.gender-input-field {
+   grid-area: gender;
+}
