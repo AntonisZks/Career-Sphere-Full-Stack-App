@@ -1,36 +1,38 @@
 const mysql = require("mysql2");
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 
 // Define the database connection data
 const database_connection_data = {
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "careersphere"
+
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE
+
 };
 
-/**
- * Creates a connection pool for the database according to
- * the database connection data.
- * 
- * @returns the pool created
- */
-function createConnectionPool() {
-    
-    // Create a connection pooland return it
-    const pool = mysql.createPool({
+// Create the connection pool
+const db_pool = mysql.createPool({
 
-        ...database_connection_data,
-        waitForConnections: true,
-        connectionLimit: 10,
-        queueLimit: 0
-    
+    ...database_connection_data,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+
+});
+
+const executeQuery = (sqlQuery, params) => {
+    return new Promise((resolve, reject) => {
+        db_pool.query(sqlQuery, params, (error, results) => {
+            if (error) {
+                return reject(error);
+            }
+            resolve(results);
+        });
     });
-
-    return pool;
-
 }
 
-module.exports = { 
-    createConnectionPool 
-};
+module.exports = { db_pool, executeQuery };

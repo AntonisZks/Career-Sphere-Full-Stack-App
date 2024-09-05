@@ -36,7 +36,7 @@ app.use('/home', homeRoutes);
 
 //    // Receive all the emails in the database and check if there is a user with the given email
 //    const sqlEmailsQuery = "SELECT email FROM users WHERE email = ?";
-//    databaseConnectionPool.query(sqlEmailsQuery, [email], (error, results) => {
+//    db_pool.query(sqlEmailsQuery, [email], (error, results) => {
 //       if (error) {
 //          return response.status(500).send('Error creating account');
 //       }
