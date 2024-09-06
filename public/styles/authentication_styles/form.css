@@ -48,3 +48,47 @@
 .gender-input-field {
    grid-area: gender;
 }
+
+/* Submit button styling */
+
+.auth-main-content .submit-button-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin: 40px 0 30px 0;
+}
+.auth-main-content .submit-button-container .submit-button {
+   color: var(--text-theme-color);
+   font-size: 2rem;
+   background-color: #fff;
+   border: 2px solid var(--text-theme-color);
+   border-radius: 7px;
+   width: 100%;
+   padding: 3px 0;
+   cursor: pointer;
+   transition: 0.3s;
+}
+.auth-main-content .submit-button-container .submit-button:disabled, 
+.submit-button[disabled] {
+   color: #fff;
+   font-size: 2rem;
+   background-color:var(--text-light-grey);
+   border: 2px solid var(--text-light-grey);
+   border-radius: 7px;
+   width: 100%;
+   padding: 3px 0;
+   cursor: pointer;
+   transition: 0.3s;
+}
+.auth-main-content .submit-button-container .submit-button:disabled:hover, 
+.submit-button[disabled]:hover {
+   color: #fff;
+   font-size: 2rem;
+   background-color:var(--text-light-grey);
+   border: 2px solid var(--text-light-grey);
+   border-radius: 7px;
+   width: 100%;
+   padding: 3px 0;
+   cursor: default;
+   transition: 0.3s;
+}

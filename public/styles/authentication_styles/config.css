@@ -9,6 +9,7 @@
    --input-field-focus-background-color: rgb(220, 220, 220);
    --text-grey: #999;
    --text-dark-grey: #838383;
+   --text-light-grey: #cacaca;
    --input-field-success-color: #09c372;
    --input-field-error-color: #ff3860;
 }

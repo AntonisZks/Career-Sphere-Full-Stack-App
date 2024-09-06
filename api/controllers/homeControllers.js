@@ -1,5 +1,5 @@
 const path = require('path');
-const { db_pool } = require("../config/db_config");
+const { db_pool } = require("../../config/db_config");
 const { getUserByID, getUserProfileImageByID } = require('../models/user');
 
 
@@ -16,7 +16,7 @@ const { getUserByID, getUserProfileImageByID } = require('../models/user');
  * @since 1.0.0
  * @date 06/09/2024
  */
-exports.getUserHomePage = async (request, response) => {
+exports.getUserHomePage = async function(request, response) {
 
   // Get the user with the corresponding id passed at the url
   const userID = request.params.userID;
@@ -56,8 +56,11 @@ exports.getUserHomePage = async (request, response) => {
  * @since 1.0.0
  * @date 06/09/2024
  */
-exports.getDefaultMaleProfileImage = (request, response) => {
-  const imagePath = path.join(__dirname, '../public/assets/imgs/default_profile_image_male.png');
+exports.getDefaultMaleProfileImage = function(request, response) {
+  const imagePath = path.join(
+    __dirname, 
+    '../public/assets/imgs/default_profile_image_male.png'
+  );
   return response.sendFile(imagePath);
 }
 
@@ -73,8 +76,11 @@ exports.getDefaultMaleProfileImage = (request, response) => {
  * @since 1.0.0
  * @date 06/09/2024
  */
-exports.getDefaultFemaleProfileImage = (request, response) => {
-  const imagePath = path.join(__dirname, '../public/assets/imgs/default_profile_image_female.png');
+exports.getDefaultFemaleProfileImage = function(request, response) {
+  const imagePath = path.join(
+    __dirname, 
+    '../public/assets/imgs/default_profile_image_female.png'
+  );
   return response.sendFile(imagePath);
 }
 
@@ -91,7 +97,7 @@ exports.getDefaultFemaleProfileImage = (request, response) => {
  * @since 1.0.0
  * @date 06/09/2024
  */
-exports.getUserProfileImageUrl = (request, response) => {
+exports.getUserProfileImageUrl = function(request, response) {
 
   // Get the user with the corresponding id passed at the url
   const imageID = request.params.imageID;

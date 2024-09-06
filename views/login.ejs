@@ -1,66 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/authentication.css">
-    <script src="https://kit.fontawesome.com/b781edffa7.js" crossorigin="anonymous"></script>
-    <script type="module" src="/js/live_form_validation.js" defer></script>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Log In</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/styles/authentication.css">
+   <script src="https://kit.fontawesome.com/b781edffa7.js" crossorigin="anonymous"></script>
+   <script type="module" src="/js/live_form_validation.js" defer></script>
 </head>
+
 <body>
-    <div class="log-in-auth-container auth-container">
-        <div class="auth-header">
-            <div class="app-logo-image-container">
-                <img class="app-logo-image" src="/assets/imgs/logo_big.png" alt="app logo">
-            </div>
-            <div class="welcome-message-container">
-                <p class="welcome-message">Welcome to <b>Career Sphere!</b></p>
-            </div>
-        </div>
-        <div class="auth-main-content">
-            <h1 class="main-content-message">Sign in to your account</h1>
-            <form class="login-form" action="#" novalidate method="post">
-               <div class="log-in-main-content-inputs-container">
-                  <div class="text-input-field-container email-container">
-                     <i class="input-icon fa-solid fa-envelope"></i>
-                     <input class="text-input-field" id="emailInput" type="email" placeholder="Email" autocomplete="off" required onkeyup="validateEmail()">
-                     <i class="fas fa-check-circle"></i>
-                     <i class="fas fa-exclamation-circle"></i>
-                     <div class="error-message"></div>
-                  </div>
-                  <div class="text-input-field-container password-container">
-                     <i class="input-icon fa-solid fa-lock"></i>
-                     <input class="text-input-field" id="passwordInput" type="password" placeholder="Password" autocomplete="off" required onkeyup="validatePassword()">
-                     <i class="fas fa-check-circle"></i>
-                     <i class="fas fa-exclamation-circle"></i>
-                     <div class="error-message"></div>
-                  </div>
-               </div>
-               <div class="forgot-password-message-container">
-                  <p>Forgot Password? <a href="#">Click Here</a></p>
-               </div>
-               <div class="submit-button-container">
-                  <button class="submit-button" type="submit">Log In</button>
-               </div>
-            </form>
+   <div class="log-in-auth-container auth-container">
+      <div class="auth-header">
+         <div class="app-logo-image-container">
+            <img class="app-logo-image" src="/assets/imgs/logo_big.png" alt="app logo">
          </div>
-         <div class="auth-footer">
-            <div class="alternative-container">
-               <p>You don't have an account? <a href="signup">Sign Up</a></p>
-            </div>
+         <div class="welcome-message-container">
+            <p class="welcome-message">Welcome to <b>Career Sphere!</b></p>
          </div>
-    </div>
-    <script>
+      </div>
+      <div class="auth-main-content">
+         <h1 class="main-content-message">Sign in to your account</h1>
+         <form class="login-form" action="#" novalidate method="post">
+            <div class="log-in-main-content-inputs-container">
+               <div class="text-input-field-container email-container">
+                  <i class="input-icon fa-solid fa-envelope"></i>
+                  <input class="text-input-field" id="emailInput" type="email" placeholder="Email" autocomplete="off"
+                     required onkeyup="validateEmail()">
+                  <i class="fas fa-check-circle"></i>
+                  <i class="fas fa-exclamation-circle"></i>
+                  <div class="error-message"></div>
+               </div>
+               <div class="text-input-field-container password-container">
+                  <i class="input-icon fa-solid fa-lock"></i>
+                  <input class="text-input-field" id="passwordInput" type="password" placeholder="Password"
+                     autocomplete="off" required onkeyup="validatePassword()">
+                  <i class="fas fa-check-circle"></i>
+                  <i class="fas fa-exclamation-circle"></i>
+                  <div class="error-message"></div>
+               </div>
+            </div>
+            <div class="forgot-password-message-container">
+               <p>Forgot Password? <a href="#">Click Here</a></p>
+            </div>
+            <div class="submit-button-container">
+               <button id="submit-button" class="submit-button" type="submit" disabled>Log In</button>
+            </div>
+         </form>
+      </div>
+      <div class="auth-footer">
+         <div class="alternative-container">
+            <p>You don't have an account? <a href="signup">Sign Up</a></p>
+         </div>
+      </div>
+   </div>
+   <script>
       document.querySelectorAll(".text-input-field-container").forEach(container => {
-         container.addEventListener("click", function() {
+         container.addEventListener("click", function () {
             this.querySelector('.text-input-field').focus();
          });
       });
-    </script>
+   </script>
 </body>
+
 </html>

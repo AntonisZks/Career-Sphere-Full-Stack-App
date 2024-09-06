@@ -1,4 +1,4 @@
-const { db_pool, executeQuery } = require("../config/db_config");
+const { db_pool, executeQuery } = require("../../config/db_config");
 
 async function getUserByID(userID) {
 
