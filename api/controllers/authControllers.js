@@ -1,4 +1,5 @@
 const { db_pool } = require("../../config/db_config");
+const { insertDataIntoDatabase } = require("../models/user");
 
 exports.createNewAccount = async function (request, response) {
 
@@ -11,6 +12,21 @@ exports.createNewAccount = async function (request, response) {
   const passwordVerification = request.body.passwordVerification;
 
   const phoneNumber = request.body.phoneNumber;
+
+  // Collect all the data of the user
+  const userData = {
+    firstName: firstName, 
+    lastName: lastName,
+    email: email, 
+    password: password,
+    phoneNumber: phoneNumber,
+    gender: 'male'
+  };
+
+  // Insert the data into the database
+  insertDataIntoDatabase(userData);
+
+  response.redirect('/signup');
 
   // Validate the data and check for any error occuring
 
