@@ -29,18 +29,23 @@ async function getUserProfileImageByID(userID) {
 
 async function insertDataIntoDatabase(userData) {
 
+  console.log(userData);
+
   const sqlQuery = `
     INSERT INTO users (
       user_id, first_name, last_name, description, email, 
       password, phone_number, gender, type, register_date
     ) 
     VALUES (
-      NULL, '?', '?', NULL, '?', '?', '?', '?', 'professional', current_timestamp()
+      NULL, ?, ?, NULL, ?, ?, ?, ?, 'professional', current_timestamp()
     )`;
     
   const results = await executeQuery(
-    sqlQuery, userData.firstName, userData.lastName, userData.email, 
-    userData.password, userData.phoneNumber, userData.gender
+    sqlQuery, 
+    [
+      userData.firstName, userData.lastName, userData.email, 
+      userData.password, userData.phoneNumber, userData.gender
+    ]
   );
 
 }
