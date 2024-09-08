@@ -14,6 +14,20 @@ async function getUserByID(userID) {
 
 }
 
+async function getUserByEmail(email) {
+
+  // Receive the user with the corresponding id passed at the url
+  const sqlQuery = "SELECT * FROM users WHERE email = ?"
+  const results = await executeQuery(sqlQuery, [email]);
+  
+  if (results.length !== 1) {
+    return null;
+  }
+
+  return results[0];
+
+}
+
 async function getUserProfileImageByID(userID) {
 
   const sqlQuery = "SELECT image_id FROM profile_images WHERE user_id = ?";
@@ -28,8 +42,6 @@ async function getUserProfileImageByID(userID) {
 }
 
 async function insertDataIntoDatabase(userData) {
-
-  console.log(userData);
 
   const sqlQuery = `
     INSERT INTO users (
@@ -52,6 +64,7 @@ async function insertDataIntoDatabase(userData) {
 
 module.exports = { 
   getUserByID, 
+  getUserByEmail,
   getUserProfileImageByID, 
   insertDataIntoDatabase 
 };
