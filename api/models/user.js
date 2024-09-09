@@ -14,16 +14,30 @@ async function getUserByID(userID) {
 
 }
 
+async function userExistsWithEmail(email) {
+
+  // Receive the user with the corresponding id passed at the url
+  const sqlQuery = "SELECT * FROM users WHERE email = ?"
+  const results = await executeQuery(sqlQuery, [email]);
+  
+  if (results.length == 1) {
+    return true;
+  }
+  
+  return false;
+
+}
+
 async function getUserByEmail(email) {
 
   // Receive the user with the corresponding id passed at the url
   const sqlQuery = "SELECT * FROM users WHERE email = ?"
   const results = await executeQuery(sqlQuery, [email]);
   
-  if (results.length !== 1) {
+  if (results.length != 1) {
     return null;
   }
-
+  
   return results[0];
 
 }
@@ -52,7 +66,7 @@ async function insertDataIntoDatabase(userData) {
       NULL, ?, ?, NULL, ?, ?, ?, ?, 'professional', current_timestamp()
     )`;
     
-  const results = await executeQuery(
+  await executeQuery(
     sqlQuery, 
     [
       userData.firstName, userData.lastName, userData.email, 
@@ -60,11 +74,15 @@ async function insertDataIntoDatabase(userData) {
     ]
   );
 
+  const newUser = await getUserByEmail(userData.email);
+
+  return newUser.user_id;
+
 }
 
 module.exports = { 
   getUserByID, 
-  getUserByEmail,
+  userExistsWithEmail,
   getUserProfileImageByID, 
   insertDataIntoDatabase 
 };

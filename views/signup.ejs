@@ -33,7 +33,7 @@
 
                <div class="text-input-field-container fname-container">
                   <i class="input-icon fa-solid fa-user"></i>
-                  <input name="firstName" class="text-input-field" id="firstNameInput" type="email"
+                  <input name="firstName" class="text-input-field" id="firstNameInput" type="text"
                      placeholder="First Name" autocomplete="off" required onkeyup="validateFirstName()">
                   <i class="success-icon fas fa-check-circle"></i>
                   <i class="error-icon fas fa-exclamation-circle"></i>
@@ -103,9 +103,11 @@
             <div class="submit-button-container">
                <button id="submit-button" class="submit-button" type="submit" disabled>Sign Up</button>
             </div>
-            <div class="submition-error-message-container">
-               <p class="sumbition-error-message">Email already exists</p>
-            </div>
+            <% if (error) { %>
+               <div class="submition-error-message-container">
+                  <p class="sumbition-error-message"><%= error %></p>
+               </div>
+            <% } %>
          </form>
       </div>
       <div class="auth-footer">

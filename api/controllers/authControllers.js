@@ -1,13 +1,13 @@
 const { db_pool } = require("../../config/db_config");
-const { getUserByEmail, insertDataIntoDatabase } = require("../models/user");
+const { userExistsWithEmail, insertDataIntoDatabase } = require("../models/user");
 const bcrypt = require('bcrypt');
 
 exports.createNewAccount = async function (request, response) {
 
   // Receive the email of the user entered and check whether the email already exists or not
   const email = request.body.email;
-  if (getUserByEmail(email) !== null) {
-    console.log("Email already exists");
+  if (await userExistsWithEmail(email)) {
+    return response.redirect('/signup?error=Email is already in use');
   }
 
   // Receive the rest of the user data from the registration form which is the body of the request
@@ -38,8 +38,8 @@ exports.createNewAccount = async function (request, response) {
   };
 
   // Insert the data into the database
-  insertDataIntoDatabase(userRegistrationData);
+  const newUserID = await insertDataIntoDatabase(userRegistrationData);
 
-  response.redirect('/signup');
+  response.redirect(`/home/${newUserID}`);
 
 };

@@ -59,7 +59,7 @@ exports.getUserHomePage = async function(request, response) {
 exports.getDefaultMaleProfileImage = function(request, response) {
   const imagePath = path.join(
     __dirname, 
-    '../public/assets/imgs/default_profile_image_male.png'
+    '../../public/assets/imgs/default_profile_image_male.png'
   );
   return response.sendFile(imagePath);
 }
@@ -79,7 +79,7 @@ exports.getDefaultMaleProfileImage = function(request, response) {
 exports.getDefaultFemaleProfileImage = function(request, response) {
   const imagePath = path.join(
     __dirname, 
-    '../public/assets/imgs/default_profile_image_female.png'
+    '../../public/assets/imgs/default_profile_image_female.png'
   );
   return response.sendFile(imagePath);
 }
