@@ -11,7 +11,7 @@ async function getUserByID(userID) {
   }
 
   return results[0];
-
+  
 }
 
 async function userExistsWithEmail(email) {
@@ -34,7 +34,7 @@ async function getUserByEmail(email) {
   const sqlQuery = "SELECT * FROM users WHERE email = ?"
   const results = await executeQuery(sqlQuery, [email]);
   
-  if (results.length != 1) {
+  if (results.length !== 1) {
     return null;
   }
   
@@ -82,6 +82,7 @@ async function insertDataIntoDatabase(userData) {
 
 module.exports = { 
   getUserByID, 
+  getUserByEmail,
   userExistsWithEmail,
   getUserProfileImageByID, 
   insertDataIntoDatabase 
