@@ -3,20 +3,6 @@
 import { EMAIL_REGEX, PHONE_REGEX } from './config.js';
 import { setError, setSuccess } from './input_field_setters.js';
 
-function setSubmitButton() {
-
-    let disabledButton = false;
-
-    document.querySelectorAll(".text-input-field-container").forEach(container => {
-        if (!container.classList.contains('success')) {
-            disabledButton = true;
-            return;
-        }
-    });
-
-    document.getElementById('submit-button').disabled = disabledButton;
-
-}
 
 /**
  * Validates the first name field. Checks for required input, valid characters, 
@@ -33,19 +19,15 @@ function validateFirstName() {
 
     if (firstNameValue === '') {
         setError(firstNameElement, 'First name is required');
-        setSubmitButton();
         return false;
     } else if (!firstNameValue.match(/^[a-zA-Z]+$/)) {
         setError(firstNameElement, 'Only characters allowed');
-        setSubmitButton();
         return false;
     } else if (firstNameValue.length < 2) {
         setError(firstNameElement, 'At least 2 characters');
-        setSubmitButton();
         return false;
     } else {
         setSuccess(firstNameElement);
-        setSubmitButton();
         return true;
     }
 
@@ -66,19 +48,15 @@ function validateLastName() {
 
     if (lastNameValue === '') {
         setError(lastNameElement, 'Last name is required');
-        setSubmitButton();
         return false;
     } else if (!lastNameValue.match(/^[a-zA-Z]+$/)) {
         setError(lastNameElement, 'Only characters allowed');
-        setSubmitButton();
         return false;
     } else if (lastNameValue.length < 2) {
         setError(lastNameElement, 'At least 2 characters');
-        setSubmitButton();
         return false;
     } else {
         setSuccess(lastNameElement);
-        setSubmitButton();
         return true;
     }
 
@@ -99,15 +77,12 @@ function validateEmail() {
 
     if (emailValue === '') {
         setError(emailElement, 'Email is required');
-        setSubmitButton();
         return false;
     } else if (!EMAIL_REGEX.test(String(emailValue).toLowerCase())) {
         setError(emailElement, 'Provide a valid email address');
-        setSubmitButton();
         return false;
     } else {
         setSuccess(emailElement);
-        setSubmitButton();
         return true;
     }
 
@@ -128,15 +103,12 @@ function validatePassword() {
 
     if (passwordValue === '') {
         setError(passwordElement, 'Password is required');
-        setSubmitButton();
         return false;
     } else if (passwordValue.length < 8) {
         setError(passwordElement, 'Password must be at least 8 characters');
-        setSubmitButton();
         return false;
     } else {
         setSuccess(passwordElement);
-        setSubmitButton();
         return true;
     }
 
@@ -159,19 +131,15 @@ function validatePasswordVerification() {
 
     if (passwordVerificationValue === '') {
         setError(passwordVerificationElement, 'Password is required');
-        setSubmitButton();
         return false;
     } else if (passwordVerificationValue.length < 8) {
         setError(passwordVerificationElement, 'Password must be at least 8 characters');
-        setSubmitButton();
         return false;
     } else if (passwordVerificationValue !== passwordValue) {
         setError(passwordVerificationElement, 'Passwords do not match');
-        setSubmitButton();
         return false;
     } else {
         setSuccess(passwordVerificationElement);
-        setSubmitButton();
         return true;
     }
 
@@ -192,19 +160,15 @@ function validatePhoneNumber() {
 
     if (phoneNumberValue === '') {
         setError(phoneNumberElement, 'Phone number is required');
-        setSubmitButton();
         return false;
     } else if (!PHONE_REGEX.test(phoneNumberValue)) {
         setError(phoneNumberElement, 'Only digits allowed');
-        setSubmitButton();
         return false;
     } else if (phoneNumberValue.length !== 10) {
         setError(phoneNumberElement, 'Phone number must have exactly 10 digits');
-        setSubmitButton();
         return false;
     } else {
         setSuccess(phoneNumberElement);
-        setSubmitButton();
         return true;
     }
 

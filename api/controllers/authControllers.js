@@ -139,7 +139,7 @@ exports.connectToAccount = async function (request, response) {
     request.session.formData = { email, password };
     request.session.error = "Email address does not exist";
 
-    return response.redirect(`/login`);
+    return response.status(400).json({ error: 'Email address does not exist' });
   }
 
   // Then check if the given password matches the password of the account found inside the database, 
@@ -152,11 +152,11 @@ exports.connectToAccount = async function (request, response) {
       request.session.formData = { email, password };
       request.session.error = "Incorrect password";
 
-      return response.redirect(`/login`);
+      return response.status(400).json({ error: 'Incorrect password' });
     }
     else {
       // Otherwise redirect to the home page of the logged in user
-      return response.redirect(`/home/${user.user_id}`);
+      return response.status(200).json({ userID: user.user_id });
     }
 
   } catch (error) {
