@@ -1,7 +1,22 @@
 /* Filename: live_form_validation.js */
 
-import { EMAIL_REGEX, PHONE_REGEX } from './config.js';
+import { PHONE_REGEX } from './config.js';
 import { setError, setSuccess } from './input_field_setters.js';
+import { isEmailValid, isPasswordValid } from './form_validators.js';
+
+
+function setResults(results, element) {
+
+    if (!results.isValid) {
+        setError(element, results.errorMessage);
+        return false;
+    }
+    else {
+        setSuccess(element);
+        return true;
+    }
+
+}
 
 
 /**
@@ -75,16 +90,7 @@ function validateEmail() {
     const emailElement = document.getElementById("emailInput");
     const emailValue = emailElement.value.trim();
 
-    if (emailValue === '') {
-        setError(emailElement, 'Email is required');
-        return false;
-    } else if (!EMAIL_REGEX.test(String(emailValue).toLowerCase())) {
-        setError(emailElement, 'Provide a valid email address');
-        return false;
-    } else {
-        setSuccess(emailElement);
-        return true;
-    }
+    setResults(isEmailValid(emailValue), emailElement);
 
 }
 
@@ -101,16 +107,7 @@ function validatePassword() {
     const passwordElement = document.getElementById("passwordInput");
     const passwordValue = passwordElement.value.trim();
 
-    if (passwordValue === '') {
-        setError(passwordElement, 'Password is required');
-        return false;
-    } else if (passwordValue.length < 8) {
-        setError(passwordElement, 'Password must be at least 8 characters');
-        return false;
-    } else {
-        setSuccess(passwordElement);
-        return true;
-    }
+    setResults(isPasswordValid(passwordValue), passwordElement);
 
 }
 
