@@ -2,17 +2,17 @@
 
 import { PHONE_REGEX } from './config.js';
 import { setError, setSuccess } from './input_field_setters.js';
-import { isEmailValid, isPasswordValid } from './form_validators.js';
+import { isFirstNameValid, isLastNameValid, isEmailValid, isPasswordValid } from './form_validators.js';
 
 
 function setResults(results, element) {
 
     if (!results.isValid) {
-        setError(element, results.errorMessage);
+        setError(element.parentElement, results.errorMessage);
         return false;
     }
     else {
-        setSuccess(element);
+        setSuccess(element.parentElement);
         return true;
     }
 
@@ -32,19 +32,7 @@ function validateFirstName() {
     const firstNameElement = document.getElementById("firstNameInput");
     const firstNameValue = firstNameElement.value.trim();
 
-    if (firstNameValue === '') {
-        setError(firstNameElement, 'First name is required');
-        return false;
-    } else if (!firstNameValue.match(/^[a-zA-Z]+$/)) {
-        setError(firstNameElement, 'Only characters allowed');
-        return false;
-    } else if (firstNameValue.length < 2) {
-        setError(firstNameElement, 'At least 2 characters');
-        return false;
-    } else {
-        setSuccess(firstNameElement);
-        return true;
-    }
+    setResults(isFirstNameValid(firstNameValue), firstNameElement);
 
 }
 
@@ -61,19 +49,7 @@ function validateLastName() {
     const lastNameElement = document.getElementById("lastNameInput");
     const lastNameValue = lastNameElement.value.trim();
 
-    if (lastNameValue === '') {
-        setError(lastNameElement, 'Last name is required');
-        return false;
-    } else if (!lastNameValue.match(/^[a-zA-Z]+$/)) {
-        setError(lastNameElement, 'Only characters allowed');
-        return false;
-    } else if (lastNameValue.length < 2) {
-        setError(lastNameElement, 'At least 2 characters');
-        return false;
-    } else {
-        setSuccess(lastNameElement);
-        return true;
-    }
+    setResults(isLastNameValid(lastNameValue), lastNameElement);
 
 }
 

@@ -1,5 +1,56 @@
 import { EMAIL_REGEX, PHONE_REGEX } from './config.js';
 
+
+/**
+ * Validates the first name field. Checks for required input, valid characters, 
+ * and minimum length.
+ * 
+ * @returns {boolean} True if validation passes, otherwise false.
+ * 
+ * @AntonisZks
+ */
+export function isFirstNameValid(firstNameValue) {
+
+  if (firstNameValue === '') {
+    return { isValid: false, errorMessage: "First name is required" };
+  } 
+  else if (!firstNameValue.match(/^[a-zA-Z]+$/)) {
+    return { isValid: false, errorMessage: "Only characters allowed" };
+  } 
+  else if (firstNameValue.length < 2) {
+    return { isValid: false, errorMessage: "At least 2 characters" };
+  } 
+  else {
+    return { isValid: true };
+  }
+
+}
+
+/**
+ * Validates the last name field. Checks for required input, valid characters, 
+ * and minimum length.
+ * 
+ * @returns {boolean} True if validation passes, otherwise false.
+ * 
+ * @AntonisZks
+ */
+export function isLastNameValid(lastNameValue) {
+
+  if (lastNameValue === '') {
+    return { isValid: false, errorMessage: "Last name is required" };
+  } 
+  else if (!lastNameValue.match(/^[a-zA-Z]+$/)) {
+    return { isValid: false, errorMessage: "Only characters allowed" };
+  } 
+  else if (lastNameValue.length < 2) {
+    return { isValid: false, errorMessage: "At least 2 characters" };
+  } 
+  else {
+    return { isValid: true };
+  }
+
+}
+
 /**
  * Validates the email field. Checks for required input 
  * and a valid email format.

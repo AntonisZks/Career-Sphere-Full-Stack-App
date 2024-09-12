@@ -1,5 +1,5 @@
 import { setError } from './input_field_setters.js';
-import { isEmailValid, isPasswordValid } from './form_validators.js';
+import { isFirstNameValid, isLastNameValid, isEmailValid, isPasswordValid } from './form_validators.js';
 
 
 // Wait for the DOM to load before executing the following script
@@ -15,12 +15,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Receive the form data HTML elements. These elements are all input fields
     const firstNameElement = document.getElementById('firstNameInput');
-    const lastNameElement = document.getElementById('lastNameInput');
-    
-    // TODO: Receive the rest of the data ...
-    
+    const lastNameElement = document.getElementById('lastNameInput');  
     const emailElement = document.getElementById('emailInput');
     const passwordElement = document.getElementById('passwordInput');
+    const passwordVerificationElement = document.getElementById('passwordVerificationInput');
+    const phoneNumberElement = document.getElementById('phoneInput');
+
+    // Validate the first and last name and if any data is not valid set an error to the 
+    // corresponding input field
+    const firstNameValidationResult = isFirstNameValid(firstNameElement.value.trim());
+    if (!firstNameValidationResult.isValid) {
+      setError(firstNameElement, firstNameValidationResult.errorMessage);
+      validData = false;
+    }
+
+    const lastNameValidationResult = isLastNameValid(lastNameElement.value.trim());
+    if (!lastNameValidationResult.isValid) {
+      setError(lastNameElement, lastNameValidationResult.errorMessage);
+      validData = false;
+    }
 
     // Validate the email address and the password and if any data is not valid set an 
     // error to the corresponding input field
