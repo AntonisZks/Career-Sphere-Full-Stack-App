@@ -5,15 +5,20 @@ import { isEmailValid, isPasswordValid } from './form_validators.js';
 // Wait for the DOM to load before executing the following script
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Receive the login form of the application and add the submit event listener
+  // Receive the signup form of the application and add the submit event listener
   // to it to handle the submit procedure
-  document.getElementById('loginForm').addEventListener('submit', async function (event) {
+  document.getElementById('signupForm').addEventListener('submit', async function (event) {
 
     // First prevent the default action of the form submition
     event.preventDefault();
     let validData = true;
 
-    // Receive the email and the password HTML elements. These elements are both input fields
+    // Receive the form data HTML elements. These elements are all input fields
+    const firstNameElement = document.getElementById('firstNameInput');
+    const lastNameElement = document.getElementById('lastNameInput');
+    
+    // TODO: Receive the rest of the data ...
+    
     const emailElement = document.getElementById('emailInput');
     const passwordElement = document.getElementById('passwordInput');
 

@@ -28,7 +28,7 @@
       </div>
       <div class="auth-main-content">
          <h1 class="main-content-message">Create an account</h1>
-         <form class="login-form" action="/api/create_account" novalidate method="post">
+         <form id="signupForm" class="login-form" novalidate>
             <div class="sign-up-main-content-inputs-container">
 
                <div class="text-input-field-container fname-container">
@@ -116,6 +116,7 @@
          </div>
       </div>
    </div>
+   <script type="module" src="/js/submit_signup_form.js"></script>
    <script defer>
       document.querySelectorAll(".text-input-field-container").forEach(container => {
          container.addEventListener("click", function () {
