@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
       validData = false;
     }
 
-    const passwordValidationResult = isPasswordValid(emailElement.value.trim());
+    const passwordValidationResult = isPasswordValid(passwordElement.value.trim());
     if (!passwordValidationResult.isValid) {
       setError(passwordElement, passwordValidationResult.errorMessage);
       validData = false;
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // so we can send the data to the backend of the application
     const formData = {
       email: emailElement.value.trim(),
-      password: emailElement.value.trim()
+      password: passwordElement.value.trim()
     };
 
     try {

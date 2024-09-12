@@ -1,5 +1,6 @@
 import { setError } from './input_field_setters.js';
-import { isFirstNameValid, isLastNameValid, isEmailValid, isPasswordValid } from './form_validators.js';
+import { isFirstNameValid, isLastNameValid, isPhoneNumberValid } from './form_validators.js';
+import { isEmailValid, isPasswordValid, isPasswordVerificationValid } from './form_validators.js';
 
 
 // Wait for the DOM to load before executing the following script
@@ -43,9 +44,28 @@ document.addEventListener('DOMContentLoaded', function () {
       validData = false;
     }
 
-    const passwordValidationResult = isPasswordValid(emailElement.value.trim());
+    const passwordValidationResult = isPasswordValid(passwordElement.value.trim());
     if (!passwordValidationResult.isValid) {
       setError(passwordElement, passwordValidationResult.errorMessage);
+      validData = false;
+    }
+
+    const passwordVerificationValidationResult = isPasswordVerificationValid(
+      passwordElement.value.trim(), 
+      passwordVerificationElement.value.trim()
+    );
+
+    if (!passwordVerificationValidationResult.isValid) {
+      
+      setError(passwordVerificationElement, passwordVerificationValidationResult.errorMessage);
+      validData = false;
+    }
+
+    // Validate the phone number and if any data is not valid set an error to the corresponding 
+    // input field
+    const phoneNumberResult = isPhoneNumberValid(phoneNumberElement.value.trim());
+    if (!phoneNumberResult.isValid) {
+      setError(phoneNumberElement, phoneNumberResult.errorMessage);
       validData = false;
     }
 
@@ -55,14 +75,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // Otherwise continue with the submit process. At this point all the data are valid,
     // so we can send the data to the backend of the application
     const formData = {
+      firstName: firstNameElement.value.trim(),
+      lastName: lastNameElement.value.trim(),
       email: emailElement.value.trim(),
-      password: emailElement.value.trim()
+      password: passwordElement.value.trim(),
+      passwordVerification: passwordVerificationElement.value.trim(),
+      phoneNumber: phoneNumberElement.value.trim()
     };
 
     try {
 
       // Try sending the data to the backend and get the server response using Fetch API
-      const response = await fetch('/api/connect_to_account', {
+      const response = await fetch('/api/create_account', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

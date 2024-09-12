@@ -13,13 +13,13 @@ export function isFirstNameValid(firstNameValue) {
 
   if (firstNameValue === '') {
     return { isValid: false, errorMessage: "First name is required" };
-  } 
+  }
   else if (!firstNameValue.match(/^[a-zA-Z]+$/)) {
     return { isValid: false, errorMessage: "Only characters allowed" };
-  } 
+  }
   else if (firstNameValue.length < 2) {
     return { isValid: false, errorMessage: "At least 2 characters" };
-  } 
+  }
   else {
     return { isValid: true };
   }
@@ -38,13 +38,13 @@ export function isLastNameValid(lastNameValue) {
 
   if (lastNameValue === '') {
     return { isValid: false, errorMessage: "Last name is required" };
-  } 
+  }
   else if (!lastNameValue.match(/^[a-zA-Z]+$/)) {
     return { isValid: false, errorMessage: "Only characters allowed" };
-  } 
+  }
   else if (lastNameValue.length < 2) {
     return { isValid: false, errorMessage: "At least 2 characters" };
-  } 
+  }
   else {
     return { isValid: true };
   }
@@ -89,6 +89,56 @@ export function isPasswordValid(passwordValue) {
   }
   else if (passwordValue.length < 8) {
     return { isValid: false, errorMessage: "Password must be at least 8 characters" };
+  }
+  else {
+    return { isValid: true };
+  }
+
+}
+
+/**
+ * Validates the password verification field. Checks for required input, minimum length, 
+ * and matching passwords.
+ * 
+ * @returns {boolean} True if validation passes, otherwise false.
+ * 
+ * @AntonisZks
+ */
+export function isPasswordVerificationValid(passwordValue, passwordVerificationValue) {
+
+  if (passwordVerificationValue === '') {
+    return { isValid: false, errorMessage: "Password is required" };
+  }
+  else if (passwordVerificationValue.length < 8) {
+    return { isValid: false, errorMessage: "Password must be at least 8 characters" };
+  }
+  else if (passwordVerificationValue !== passwordValue) {
+    return { isValid: false, errorMessage: "Passwords do not match" };
+  }
+  else {
+    return { isValid: true };
+  }
+
+}
+
+/**
+ * Validates the phone number field. Checks for required input, valid digits, 
+ * and exact length.
+ * 
+ * @returns {boolean} True if validation passes, otherwise false.
+ * 
+ * @AntonisZks
+ */
+export function isPhoneNumberValid(phoneNumberValue) {
+
+  if (phoneNumberValue === '') {
+    return { isValid: false, errorMessage: "Phone number is required" };
+  }
+  else if (!PHONE_REGEX.test(phoneNumberValue)) {
+    return { isValid: false, errorMessage: "Only digits allowed" };
+  }
+  else if (phoneNumberValue.length !== 10) {
+    return { isValid: false, errorMessage: "Phone number must have exactly 10 digits" };
   }
   else {
     return { isValid: true };

@@ -2,17 +2,20 @@
 
 import { PHONE_REGEX } from './config.js';
 import { setError, setSuccess } from './input_field_setters.js';
-import { isFirstNameValid, isLastNameValid, isEmailValid, isPasswordValid } from './form_validators.js';
+import { isFirstNameValid, isLastNameValid } from './form_validators.js';
+import { isEmailValid, isPasswordValid, isPasswordVerificationValid } from './form_validators.js';
+import { isPhoneNumberValid } from './form_validators.js';
+
 
 
 function setResults(results, element) {
 
     if (!results.isValid) {
-        setError(element.parentElement, results.errorMessage);
+        setError(element, results.errorMessage);
         return false;
     }
     else {
-        setSuccess(element.parentElement);
+        setSuccess(element);
         return true;
     }
 
@@ -102,19 +105,7 @@ function validatePasswordVerification() {
     const passwordValue = passwordElement.value.trim();
     const passwordVerificationValue = passwordVerificationElement.value.trim();
 
-    if (passwordVerificationValue === '') {
-        setError(passwordVerificationElement, 'Password is required');
-        return false;
-    } else if (passwordVerificationValue.length < 8) {
-        setError(passwordVerificationElement, 'Password must be at least 8 characters');
-        return false;
-    } else if (passwordVerificationValue !== passwordValue) {
-        setError(passwordVerificationElement, 'Passwords do not match');
-        return false;
-    } else {
-        setSuccess(passwordVerificationElement);
-        return true;
-    }
+    setResults(isPasswordVerificationValid(passwordValue, passwordVerificationValue), passwordVerificationElement);
 
 }
 
@@ -131,19 +122,7 @@ function validatePhoneNumber() {
     const phoneNumberElement = document.getElementById("phoneInput");
     const phoneNumberValue = phoneNumberElement.value.trim();
 
-    if (phoneNumberValue === '') {
-        setError(phoneNumberElement, 'Phone number is required');
-        return false;
-    } else if (!PHONE_REGEX.test(phoneNumberValue)) {
-        setError(phoneNumberElement, 'Only digits allowed');
-        return false;
-    } else if (phoneNumberValue.length !== 10) {
-        setError(phoneNumberElement, 'Phone number must have exactly 10 digits');
-        return false;
-    } else {
-        setSuccess(phoneNumberElement);
-        return true;
-    }
+    setResults(isPhoneNumberValid(phoneNumberValue), phoneNumberElement);
 
 }
 

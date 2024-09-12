@@ -89,7 +89,7 @@ exports.createNewAccount = async function (request, response) {
     request.session.formData = { ...userRegistrationData };
     request.session.error = 'Email address is already in use'
 
-    return response.redirect('/signup');
+    return response.status(400).json({ error: "Email address is already in use" });
   }
 
   // Encrypt the user password to keep safety and if there is no error 
@@ -106,7 +106,7 @@ exports.createNewAccount = async function (request, response) {
 
   // Insert the data into the database and redirect to the home page of the new user
   const newUserID = await insertDataIntoDatabase(userRegistrationData);
-  return response.redirect(`/home/${newUserID}`);
+  return response.status(200).json({ userID: newUserID });
 
 };
 
@@ -136,7 +136,7 @@ exports.connectToAccount = async function (request, response) {
   // First check if there is a user with the corresponding email inside the database. If not redirect to 
   // the login page with an error message and the filled form data
   if (user == null) {
-    request.session.formData = { email, password };
+    request.session.formData = { email: email, password: password };
     request.session.error = "Email address does not exist";
 
     return response.status(400).json({ error: 'Email address does not exist' });
@@ -149,7 +149,7 @@ exports.connectToAccount = async function (request, response) {
     isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      request.session.formData = { email, password };
+      request.session.formData = { email: email, password: password };
       request.session.error = "Incorrect password";
 
       return response.status(400).json({ error: 'Incorrect password' });
