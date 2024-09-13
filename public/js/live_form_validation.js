@@ -126,6 +126,16 @@ function validatePhoneNumber() {
 
 }
 
+function validateGender() {
+
+    const genderSelectionContainer = document.getElementById("radioInputFieldContainer");
+    const errorDisplay = genderSelectionContainer.querySelector('.error-message');
+
+    errorDisplay.innerText = '';
+    genderSelectionContainer.classList.remove('error');
+
+}
+
 // Expose validation functions to the global scope
 window.validateFirstName = validateFirstName;
 window.validateLastName = validateLastName;
@@ -135,3 +145,4 @@ window.validatePassword = validatePassword;
 window.validatePasswordVerification = validatePasswordVerification;
 
 window.validatePhoneNumber = validatePhoneNumber;
+window.validateGender = validateGender;

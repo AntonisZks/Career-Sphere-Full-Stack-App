@@ -81,7 +81,7 @@ exports.createNewAccount = async function (request, response) {
     password: request.body.password,
     passwordVerification: request.body.passwordVerification,
     phoneNumber: request.body.phoneNumber,
-    gender: 'male'
+    gender: request.body.gender
   }
   
   // Check whether the email already exists or not. If not redirect to the sign up page with an error message

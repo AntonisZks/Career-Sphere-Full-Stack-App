@@ -1,6 +1,7 @@
 import { setError } from './input_field_setters.js';
 import { isFirstNameValid, isLastNameValid, isPhoneNumberValid } from './form_validators.js';
 import { isEmailValid, isPasswordValid, isPasswordVerificationValid } from './form_validators.js';
+import { isGenderValid } from './form_validators.js';
 
 
 // Wait for the DOM to load before executing the following script
@@ -21,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const passwordElement = document.getElementById('passwordInput');
     const passwordVerificationElement = document.getElementById('passwordVerificationInput');
     const phoneNumberElement = document.getElementById('phoneInput');
+    const maleGenderElement = document.getElementById('maleInput');
+    const femaleGenderElement = document.getElementById('femaleInput');
+    
 
     // Validate the first and last name and if any data is not valid set an error to the 
     // corresponding input field
@@ -69,6 +73,17 @@ document.addEventListener('DOMContentLoaded', function () {
       validData = false;
     }
 
+    const genderResult = isGenderValid(maleGenderElement, femaleGenderElement);
+    if (!genderResult.isValid) {
+      const genderSelectionContainer = document.getElementById("radioInputFieldContainer");
+      const errorDisplay = genderSelectionContainer.querySelector('.error-message');
+
+      errorDisplay.innerText = genderResult.errorMessage;
+      genderSelectionContainer.classList.add('error');
+
+      validData = false;
+    }
+
     // If any data is not valid stop here and return
     if (!validData) { return; }
 
@@ -80,7 +95,8 @@ document.addEventListener('DOMContentLoaded', function () {
       email: emailElement.value.trim(),
       password: passwordElement.value.trim(),
       passwordVerification: passwordVerificationElement.value.trim(),
-      phoneNumber: phoneNumberElement.value.trim()
+      phoneNumber: phoneNumberElement.value.trim(),
+      gender: (maleGenderElement.checked) ? 'male' : 'female'
     };
 
     try {

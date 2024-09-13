@@ -28,7 +28,7 @@
 }
 .auth-main-content .text-input-field-container .error-message {
    color: var(--input-field-error-color);
-   font-size: 13px;
+   font-size: 0.8rem;
    height: 23px;
    position: absolute;
    margin-top: 90px;
@@ -48,11 +48,11 @@
 .auth-main-content .radio-input-field-container {
    width: 100%;
    margin: 10px 0 20px;
-   display: flex;
-   flex-direction: row;
-   justify-content: start;
-   align-items: center;
-   gap: 40px;
+   display: grid;
+   grid-template-columns: 20% 1fr;
+   grid-template-areas: 
+   "maleSelector femaleSelector"
+   "genderError genderError";
    padding-left: 15px;
    color: var(--text-dark-grey);
 }
@@ -62,11 +62,24 @@
    align-items: center;
    gap: 8px;
 }
+.auth-main-content .radio-input-field-container .male-gender-radio-input {
+   grid-area: maleSelector;
+}
+.auth-main-content .radio-input-field-container .female-gender-radio-input {
+   grid-area: femaleSelector;
+}
 .auth-main-content .radio-input-field-container input {
    accent-color: var(--text-theme-color);
    width: 17px;
    height: 17px;
    cursor: pointer;
+}
+.auth-main-content .radio-input-field-container .error-message {
+   grid-area: genderError;
+   color: var(--input-field-error-color);
+   font-size: 0.8rem;
+   margin-top: 35px;
+   position: absolute;
 }
 .auth-main-content .text-input-field-container input {
    width: 100%;

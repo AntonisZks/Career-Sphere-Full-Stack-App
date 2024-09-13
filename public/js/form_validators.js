@@ -145,3 +145,22 @@ export function isPhoneNumberValid(phoneNumberValue) {
   }
 
 }
+
+/**
+ * Validates the gender radio field. Checks if any of the two radio buttons
+ * has been selected.
+ * 
+ * @returns {boolean} True if validation passes, otherwise false.
+ * 
+ * @AntonisZks
+ */
+export function isGenderValid(maleGenderElement, femaleGenderElement) {
+
+  if (maleGenderElement.checked || femaleGenderElement.checked) {
+    return { isValid: true };
+  }
+  else {
+    return { isValid: false, errorMessage: "Gender is required" };
+  }
+
+}
