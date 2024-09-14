@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // If we received a successfull response, redirect to the home page of the desired user
       if (response.ok) {
         const result = await response.json();
-        window.location.href = `/home/${result.userID}`;
+        window.location.href = `/home?uid=${result.userID}`;
       }
       // Otherwise reload the page with some additional error messages
       else {

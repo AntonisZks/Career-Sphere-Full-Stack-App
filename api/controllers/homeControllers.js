@@ -19,7 +19,7 @@ const { getUserByID, getUserProfileImageByID } = require('../models/user');
 exports.getUserHomePage = async function (request, response) {
 
   // Get the user with the corresponding id passed at the url
-  const userID = request.params.userID;
+  const userID = request.query.uid;
 
   // Receive the user corresponding to the given ID from the database, and if they 
   // doesn't exist send a 404 error as a response
