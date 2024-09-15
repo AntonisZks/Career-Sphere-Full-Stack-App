@@ -1,6 +1,6 @@
 const path = require('path');
 const { db_pool } = require("../../config/db_config");
-const { getUserByID, getUserProfileImageByID } = require('../models/user');
+const { getUserByID, getUserProfileImageByID, getUserBannerImageByID } = require('../models/user');
 
 
 /**
@@ -28,16 +28,25 @@ exports.getUserHomePage = async function (request, response) {
     return response.status(404).send('User not found');
   }
 
+  // Construct the profile banner image url according to the user banner image. If the 
+  // user does not have a profile image send null
+  let bannerImageUrl = '';
+  let bannerImage = await getUserBannerImageByID(userID);
+  bannerImageUrl = (bannerImage == null) 
+    ? null 
+    : `/home/banner_image/${bannerImage.image_id}`;
+
   // Construct the profile image url path according to the user profile image
   // If the user does not have a profile image send a default profile image as a response
   let profileImageUrl = '';
-  let image = await getUserProfileImageByID(userID);
-  profileImageUrl = (image == null)
+  let profileImage = await getUserProfileImageByID(userID);
+  profileImageUrl = (profileImage == null)
     ? `/home/profile_image/default/${user.gender}`
-    : `/home/profile_image/${image.image_id}`;
+    : `/home/profile_image/${profileImage.image_id}`;
 
-  // Add the profile image url as a property to the user object
+  // Add the bannder and profile image url as a property to the user object
   user.profile_image_url = profileImageUrl;
+  user.banner_image_url = bannerImageUrl;
 
   // Send the HTML code of the home page as a response to the client
   return response.status(200).render('home', { user: user });
@@ -99,7 +108,7 @@ exports.getDefaultFemaleProfileImage = function (request, response) {
  */
 exports.getUserProfileImageUrl = function (request, response) {
 
-  // Get the user with the corresponding id passed at the url
+  // Get the image with the corresponding id passed at the url
   const imageID = request.params.imageID;
 
   // Receive the image with the given ID from the database, and if it doesn't exist send a
@@ -113,7 +122,48 @@ exports.getUserProfileImageUrl = function (request, response) {
     }
 
     // If number of results is one, it means that the image was successfully received from
-    // the database we can store its data and send them back as a response
+    // the database and we can store its data and send them back as a response
+    if (results.length === 1) {
+
+      const image = results[0];
+
+      // Store the data of the image and set its type to be image
+      const data = image.data;
+      const type = "image/jpeg";
+
+      // Set the response type to be image and send the response back to the client
+      response.contentType(type);
+
+      return response.send(data);
+
+    } else {
+
+      // Otherwise send a 404 error as a response back to the client
+      return response.status(404).send("Image not found");
+
+    }
+
+  });
+
+}
+
+exports.getUserBannerImageUrl = function (request, response) {
+
+  // Get the image with the corresponding id passed at the url
+  const imageID = request.params.imageID;
+
+  // Receive the image with the given ID from the database, and if it doesn't exist send a
+  // 404 error as a response
+  const sqlImageQuery = "SELECT data FROM profile_bg_images WHERE image_id = ?";
+  db_pool.query(sqlImageQuery, [imageID], (error, results) => {
+
+    // Check if the query was not executed successfully
+    if (error) {
+      return response.status(500).send("Error receiving profile image");
+    }
+
+    // If number of results is one, it means that the image was successfully received from
+    // the database and we can store its data and send them back as a response
     if (results.length === 1) {
 
       const image = results[0];

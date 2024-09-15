@@ -55,6 +55,19 @@ async function getUserProfileImageByID(userID) {
 
 }
 
+async function getUserBannerImageByID(userID) {
+
+  const sqlQuery = "SELECT image_id FROM profile_bg_images WHERE user_id = ?";
+  const results = await executeQuery(sqlQuery, [userID]);
+  
+  if (results.length !== 1) {
+    return null
+  }
+  
+  return results[0];
+
+}
+
 async function insertDataIntoDatabase(userData) {
 
   const sqlQuery = `
@@ -85,5 +98,6 @@ module.exports = {
   getUserByEmail,
   userExistsWithEmail,
   getUserProfileImageByID, 
+  getUserBannerImageByID,
   insertDataIntoDatabase 
 };

@@ -36,8 +36,16 @@
    <aside>
       <div class="profile-sidebar-container">
          <div class="user-banner-profile-img-title-container">
-            <img class="user-profile-banner-image" src="/assets/imgs/banner.jpg" alt="">
-            <img class="user-profile-image" src="<%= user.profile_image_url %>" width="200px" alt="">
+            <% if (user.banner_image_url != null) { %>
+               <img class="user-profile-banner-image" src="<%= user.banner_image_url %>" alt="">
+            <% } else { %>
+               <% if (user.gender == 'male') { %>
+                  <div class="user-profile-banner-image" style="background-color: rgb(44, 118, 179);" ></div>
+               <% } else { %>
+                  <div class="user-profile-banner-image" style="background-color: rgb(94, 179, 44);" ></div>
+               <% } %>   
+            <% } %>
+               <img class="user-profile-image" src="<%= user.profile_image_url %>" width="200px" alt="">
             <h2 class="user-fullname">
                <%= user.first_name  %> <%= user.last_name  %>
             </h2>
