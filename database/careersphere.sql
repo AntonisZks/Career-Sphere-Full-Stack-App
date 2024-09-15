@@ -21,6 +21,10 @@ SET time_zone = "+00:00";
 -- Βάση δεδομένων: `careersphere`
 --
 
+DROP DATABASE IF EXISTS careersphere;
+CREATE DATABASE IF NOT EXISTS careersphere;
+USE careersphere;
+
 -- --------------------------------------------------------
 
 --
