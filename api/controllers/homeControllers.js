@@ -1,6 +1,7 @@
 const path = require('path');
 const { db_pool } = require("../../config/db_config");
 const { getUserByID, getUserProfileImageByID, getUserBannerImageByID } = require('../models/user');
+const { getUserSocialsInfo } = require('../models/user');
 
 
 /**
@@ -47,6 +48,10 @@ exports.getUserHomePage = async function (request, response) {
   // Add the bannder and profile image url as a property to the user object
   user.profile_image_url = profileImageUrl;
   user.banner_image_url = bannerImageUrl;
+
+  user.followersCount = await getUserSocialsInfo(userID, 'followers');
+  user.followingCount = await getUserSocialsInfo(userID, 'following');
+  user.friendsCount = await getUserSocialsInfo(userID, 'friends');
 
   // Send the HTML code of the home page as a response to the client
   return response.status(200).render('home', { user: user });

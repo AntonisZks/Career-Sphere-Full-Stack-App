@@ -68,6 +68,23 @@ async function getUserBannerImageByID(userID) {
 
 }
 
+async function getUserSocialsInfo(userID, type) {
+  
+  if (type == 'followers') {
+    const sqlQuery = `SELECT COUNT(*) AS 'followers' FROM users_follow_users WHERE following_id = ${userID}`;
+    const results = await executeQuery(sqlQuery, [userID]);
+
+    return results[0].followers;
+  }
+  else if (type == 'following') {
+
+  }
+  else if (type == 'friends') {
+    
+  }
+
+}
+
 async function insertDataIntoDatabase(userData) {
 
   const sqlQuery = `
@@ -99,5 +116,6 @@ module.exports = {
   userExistsWithEmail,
   getUserProfileImageByID, 
   getUserBannerImageByID,
-  insertDataIntoDatabase 
+  insertDataIntoDatabase,
+  getUserSocialsInfo
 };
