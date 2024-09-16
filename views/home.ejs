@@ -53,7 +53,7 @@
          <div class="about-me-container">
             <h3>About Me:</h3>
             <% if (user.description != null) { %>
-               <p><%= user.description %></p>
+               <p><%= user.description.split(" ").slice(0, 10).join(" ") %> ...</p>
             <% } else { %>
                <p>No Description...</p>
             <% } %>

@@ -1,0 +1,10 @@
+:root {
+  --background-color: rgb(241, 246, 255);
+
+  --poppins-font-family: "Poppins", Arial, Helvetica, sans-serif;
+  --arial-font-family: Arial, Helvetica, sans-serif;
+  
+  --text-color: rgb(119, 119, 119);
+  --text-color2: rgb(94, 46, 171);
+  --username-color: rgb(66, 66, 66);
+}
