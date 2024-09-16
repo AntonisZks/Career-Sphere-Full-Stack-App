@@ -71,27 +71,24 @@ async function getUserBannerImageByID(userID) {
 async function getUserSocialsInfo(userID, type) {
 
   if (type == 'followers') {
-    const sqlQuery = `SELECT COUNT(*) AS 'followers' FROM users_follow_users WHERE following_id = ${userID}`;
+    const sqlQuery = `SELECT COUNT(*) AS 'followers' FROM users_follow_users WHERE following_id = ?`;
     const results = await executeQuery(sqlQuery, [userID]);
 
     return results[0].followers;
   }
   else if (type == 'following') {
-    const sqlQuery = `SELECT COUNT(*) AS 'following' FROM users_follow_users WHERE follower_id = ${userID}`;
+    const sqlQuery = `SELECT COUNT(*) AS 'following' FROM users_follow_users WHERE follower_id = ?`;
     const results = await executeQuery(sqlQuery, [userID]);
 
     return results[0].following;
   }
   else if (type == 'friends') {
     const sqlQuery = `
-      SELECT COUNT(u1.following_id) AS friends
-      FROM users_follow_users u1
-      JOIN users_follow_users u2
-          ON u1.follower_id = u2.following_id
-        AND u1.following_id = u2.follower_id
-      WHERE u1.follower_id = ${userID};
+      SELECT COUNT(u1.following_id) AS friends FROM users_follow_users u1
+      JOIN users_follow_users u2 ON u1.follower_id = u2.following_id AND u1.following_id = u2.follower_id
+      WHERE u1.follower_id = ?;
     `
-    const results = await executeQuery(sqlQuery, [userID, userID]);
+    const results = await executeQuery(sqlQuery, [userID]);
 
     return results[0].friends;
   }
@@ -124,8 +121,7 @@ async function insertDataIntoDatabase(userData) {
 }
 
 module.exports = {
-  getUserByID,
-  getUserByEmail,
+  getUserByID, getUserByEmail,
   userExistsWithEmail,
   getUserProfileImageByID,
   getUserBannerImageByID,
