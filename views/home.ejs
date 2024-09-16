@@ -89,22 +89,25 @@
          <div class="my-network-container">
             <h3>My Network:</h3>
             <ul class="connections-list">
-               <li>
-                  <div class="connection-profile">
-                     <img src="/assets/imgs/user2.jpg" width="200px" alt="">
-                     <p class="connection-username">Antonis Zikas</p>
-                     <p class="connection-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, consequatur.</p>
-                  </div>
-                  <div class="connection-profile">
-                     <img src="/assets/imgs/user3.jpg" width="200px" alt="">
-                     <p class="connection-username">Liam Noam</p>
-                     <p class="connection-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, in!</p>
-                  </div>
-               </li>
+               <% for (let i = 0; i < Math.min(4, user.connections.length); i++) { %>
+                  <li>
+                     <div class="connection-profile">
+                        <img src="<%= user.connections[i].profile_image_url %>" alt="profile image">
+                        <p class="connection-username"><%= user.connections[i].first_name %> <%= user.connections[i].last_name %></p>
+                        <p class="connection-description"><%= user.connections[i].description %></p>
+                     </div>
+                  </li>
+               <% }; %>
             </ul>
-            <div class="show-more-container" class="div">
-               <button class="show-more-button">Show more</button>
-            </div>
+            <% if (user.connections.length == 0) { %>
+               <div class="no-connections-container">
+                  <p class="no-connections-message">No connections yet</p>
+               </div>
+            <% } else if (user.connections.length > 4) { %>
+               <div class="show-more-container">
+                  <button class="show-more-button">Show more</button>
+               </div>
+            <% } %>
          </div>
       </div>
    </aside>
@@ -141,14 +144,14 @@
       </div>
       <div class="post-container">
          <div class="post-header">
-            <img class="author-profile-image" src="/assets/imgs/user3.jpg" alt="">
+            <img class="author-profile-image" src="/assets/imgs/profile_images/user3.jpg" alt="">
             <h2 class="author-name">Liam Noam</h2>
             <p class="release-date">2 days ago</p>
          </div>
          <div class="post-main-content">
             <h2 class="post-title">Lorem ipsum dolor sit amet.</h2>
             <p class="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio adipisci doloribus rerum, voluptates nemo, velit exercitationem eveniet quo accusantium fuga itaque est dicta labore consectetur voluptatibus facilis ad esse dignissimos, tempora aliquam veritatis libero sapiente. Cum molestias vitae voluptates magnam accusantium sunt amet, doloremque quod possimus ipsa assumenda debitis excepturi veniam accusamus repellendus ipsam. Qui cumque blanditiis eaque, numquam, aspernatur saepe delectus expedita dolor cum quaerat, fugiat incidunt deserunt quos. Obcaecati provident quia, quidem magnam cum consectetur pariatur tempore in deserunt, corporis laudantium nobis eum doloribus voluptas architecto quod. Consequatur soluta mollitia sequi vero maxime asperiores. Praesentium, numquam. Aspernatur, eos!</p>
-            <img src="/assets/imgs/ai.jpg" alt="" class="post-image">
+            <img src="/assets/imgs/post_images/ai.jpg" alt="" class="post-image">
          </div>
          <div class="post-footer">
             <div class="reacts-container">
@@ -160,14 +163,14 @@
       </div>
       <div class="post-container">
          <div class="post-header">
-            <img class="author-profile-image" src="/assets/imgs/user2.jpg" alt="">
+            <img class="author-profile-image" src="/assets/imgs/profile_images/user2.jpg" alt="">
             <h2 class="author-name">Antonis Zikas</h2>
             <p class="release-date">1 day ago</p>
          </div>
          <div class="post-main-content">
             <h2 class="post-title">Lorem ipsum dolor sit amet consectetur.</h2>
             <p class="post-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore consequatur, nobis facilis odio cum aliquam voluptas, soluta illo earum accusantium reiciendis, vero facere? Ipsa nemo, eaque quasi consequatur praesentium omnis delectus saepe quos eligendi vero deserunt ut assumenda reprehenderit. Architecto laborum porro repellendus laudantium odit, ducimus quaerat. Nulla earum sequi quam delectus culpa eligendi at qui quis odio rerum et enim, possimus dicta cum accusantium eaque exercitationem perferendis odit amet fuga optio veniam autem! Architecto officiis mollitia quo culpa quibusdam adipisci et sed, doloremque iusto, tempora, impedit non ad qui. Cum, velit laboriosam! Dicta, iure quidem illo voluptatem maxime ipsum sequi ratione aliquam? Accusantium ut ipsam at harum rerum voluptate, doloremque vero inventore ullam quasi nulla fugit reprehenderit est culpa voluptatum aliquid odio distinctio dolor blanditiis nemo unde voluptates optio.</p>
-            <img src="/assets/imgs/uoa.jpg" alt="" class="post-image">
+            <img src="/assets/imgs/post_images/uoa.jpg" alt="" class="post-image">
          </div>
          <div class="post-footer">
             <div class="reacts-container">
@@ -179,14 +182,14 @@
       </div>
       <div class="post-container">
          <div class="post-header">
-            <img class="author-profile-image" src="/assets/imgs/user.jpg" alt="">
+            <img class="author-profile-image" src="/assets/imgs/profile_images/user.jpg" alt="">
             <h2 class="author-name">James Elijah</h2>
             <p class="release-date">10 days ago</p>
          </div>
          <div class="post-main-content">
             <h2 class="post-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
             <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis totam esse fugiat, quibusdam laborum quaerat consequatur debitis modi vero repellat doloribus itaque quos commodi, aliquam accusantium porro illum? Laboriosam alias cumque, mollitia sunt maiores illo magnam a nisi rem sequi labore cum excepturi fugiat, perferendis iusto obcaecati non iste vitae.</p>
-            <img src="/assets/imgs/group.jpg" alt="" class="post-image">
+            <img src="/assets/imgs/post_images/group.jpg" alt="" class="post-image">
          </div>
          <div class="post-footer">
             <div class="reacts-container">

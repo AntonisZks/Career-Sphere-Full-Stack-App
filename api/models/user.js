@@ -95,6 +95,21 @@ async function getUserSocialsInfo(userID, type) {
 
 }
 
+async function getUserConnections(userID) {
+
+  const sqlQuery = `
+    SELECT * FROM users WHERE user_id in (
+      SELECT u1.following_id AS friend_id FROM users_follow_users u1
+      JOIN users_follow_users u2 ON u1.follower_id = u2.following_id AND u1.following_id = u2.follower_id
+      WHERE u1.follower_id = ?
+    );
+  `
+  const results = await executeQuery(sqlQuery, [userID]);
+
+  return results;
+
+}
+
 async function insertDataIntoDatabase(userData) {
 
   const sqlQuery = `
@@ -126,5 +141,6 @@ module.exports = {
   getUserProfileImageByID,
   getUserBannerImageByID,
   insertDataIntoDatabase,
-  getUserSocialsInfo
+  getUserSocialsInfo,
+  getUserConnections
 };

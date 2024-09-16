@@ -1,7 +1,7 @@
 const path = require('path');
 const { db_pool } = require("../../config/db_config");
 const { getUserByID, getUserProfileImageByID, getUserBannerImageByID } = require('../models/user');
-const { getUserSocialsInfo } = require('../models/user');
+const { getUserSocialsInfo, getUserConnections } = require('../models/user');
 
 
 /**
@@ -49,9 +49,24 @@ exports.getUserHomePage = async function (request, response) {
   user.profile_image_url = profileImageUrl;
   user.banner_image_url = bannerImageUrl;
 
+  // Receive the user's socials data (followers, following & friends)
   user.followersCount = await getUserSocialsInfo(userID, 'followers');
   user.followingCount = await getUserSocialsInfo(userID, 'following');
   user.friendsCount = await getUserSocialsInfo(userID, 'friends');
+
+  // Receive the user's connections (friends) and set up their profile images urls
+  user.connections = await getUserConnections(userID);
+  for (let connection of user.connections) {
+    
+    let profileImageUrl = '';
+    let profileImage = await getUserProfileImageByID(connection.user_id);
+    profileImageUrl = (profileImage == null)
+      ? `/home/profile_image/default/${connection.gender}`
+      : `/home/profile_image/${profileImage.image_id}`;
+
+    connection.profile_image_url = profileImageUrl;
+  
+  }
 
   // Send the HTML code of the home page as a response to the client
   return response.status(200).render('home', { user: user });
