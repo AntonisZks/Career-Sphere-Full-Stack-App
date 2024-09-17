@@ -260,14 +260,18 @@ body {
    }
 }
 @media (max-height: 1190px) {
+   body {
+      grid-template-columns: 0.9fr 1.5fr 0.5fr;
+   }
+
    header {
-      height: 60px;
+      height: 50px;
    }
    header .application-logo {
-      width: 150px;
+      width: 120px;
    }
    header .navigation-bar .navigation-bar-list {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       display: flex;
       flex-direction: row;
       list-style: none;
@@ -275,16 +279,89 @@ body {
       align-items: center;
    }
    header .user-online-container .user-profile-image {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       object-fit: cover;
       border-radius: 50%;
    }
+   header .user-online-container::after {
+      width: 9px;
+      height: 9px;
+      border: 2px solid #fff;
+    }
+
+   aside .profile-sidebar-container {
+      width: 65%;
+      height: auto;
+      margin: 15px auto;
+      padding-bottom: 20px;
+      grid-template-rows: auto auto auto auto;
+    }
    aside .user-profile-image {
-      width: 100px;
-      height: 100px;
+      width: 50px;
+      height: 50px;
+      margin-top: -30px;
+      margin-bottom: 0;
+      border-width: 3px;
     }
     aside .user-banner-profile-img-title-container .user-fullname {
-      font-size: 1.4rem;
+      font-size: 0.9rem;
+    }
+    aside .about-me-container {
+      padding: 0 20px;
+    }
+    aside .about-me-container h3 {
+      font-size: 0.7rem;
+      padding: 10px 0;
+    }
+    aside .about-me-container p {
+      font-size: 0.6rem;
+      margin: 5px 0;
+      line-height: 0.9rem;
+    }
+    aside .socials-container {
+      padding: 0 20px;
+    }
+    aside .socials-container h3 {
+      font-size: 0.7rem;
+      padding: 10px 0;
+    }
+    aside .socials-container span {
+      margin: 5px 0;
+    }
+    aside .socials-container .socials-data-container {
+      margin: 0;
+      font-size: 0.6rem;
+    }
+    aside .my-network-container {
+      padding: 0 20px;
+    }
+    aside .my-network-container h3 {
+      font-size: 0.7rem;
+      padding: 10px 0;
+    }
+    aside .my-network-container .connections-list {
+      margin: 0;
+    }
+    aside .my-network-container .connection-profile {
+      padding: 5px;
+    }
+    aside .my-network-container .connection-profile img {
+      width: 23px;
+      height: 23px;
+    }
+    aside .my-network-container .connection-profile .connection-username {
+      font-size: 0.6rem;
+    }
+    aside .my-network-container .connection-profile .connection-description {
+      font-size: 0.5rem;
+    }
+    aside .my-network-container .show-more-container {
+      margin: 0px;
+      margin-top: 10px;
+    }
+    aside .my-network-container .show-more-button {
+      width: 60%;
+      font-size: 0.6rem;
     }
 }

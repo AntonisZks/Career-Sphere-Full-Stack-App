@@ -25,12 +25,11 @@ aside .user-banner-profile-img-title-container {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding-bottom: 30px;
   grid-area: userImages;
 }
 aside .user-profile-banner-image {
   width: 100%;
-  height: 50%;
+  height: 80px;
   object-fit: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -91,11 +90,12 @@ aside .my-network-container .connections-list {
 }
 aside .connections-list .connection-profile {
   display: grid;
-  grid-template-columns: 60px 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-areas: 
   "userProfileImg username"
   "userProfileImg userDescription";
   padding: 10px;
+  align-items: center;
 }
 aside .connections-list .connection-profile:hover {
   background-color: rgb(236, 236, 236);
@@ -114,7 +114,6 @@ aside .connections-list .connection-profile .connection-username {
   font-family: "Poppins", "Arial", Hervetica, sans-serif;
   color: var(--username-color);
   margin-left: 10px;
-  margin-top: 5px;
 }
 aside .connections-list .connection-profile .connection-description {
   grid-area: userDescription;
