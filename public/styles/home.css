@@ -260,6 +260,26 @@ body {
    }
 }
 @media (max-height: 1190px) {
+   header {
+      height: 60px;
+   }
+   header .application-logo {
+      width: 150px;
+   }
+   header .navigation-bar .navigation-bar-list {
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      height: 100%;
+      align-items: center;
+   }
+   header .user-online-container .user-profile-image {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+   }
    aside .user-profile-image {
       width: 100px;
       height: 100px;
