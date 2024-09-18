@@ -135,7 +135,7 @@ main .post-container {
 }
 main .post-container .post-header {
   display: grid;
-  grid-template-columns: 70px 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-areas: 
   "author-img author-fullname"
   "author-img release-date";
@@ -153,7 +153,7 @@ main .post-container .post-header .author-name {
   font-size: 1rem;
   color: rgb(78, 78, 78);
   align-self: center;
-  margin-left: 3px;
+  margin-left: 5px;
 }
 main .post-container .post-header .release-date {
   grid-area: release-date;
@@ -161,7 +161,7 @@ main .post-container .post-header .release-date {
   font-size: 0.8rem;
   color: rgb(130, 130, 130);
   align-self: flex-start;
-  margin-left: 3px;
+  margin-left: 5px;
 }
 main .post-container .post-main-content {
   margin: 30px 0;
