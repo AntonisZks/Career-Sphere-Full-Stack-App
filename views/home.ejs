@@ -45,7 +45,7 @@
                   <div class="user-profile-banner-image" style="background-color: rgb(94, 179, 44);" ></div>
                <% } %>   
             <% } %>
-               <img class="user-profile-image" src="<%= user.profile_image_url %>" width="200px" alt="">
+            <img class="user-profile-image" src="<%= user.profile_image_url %>" width="200px" alt="">
             <h2 class="user-fullname">
                <%= user.first_name  %> <%= user.last_name  %>
             </h2>
@@ -53,9 +53,9 @@
          <div class="about-me-container">
             <h3>About Me:</h3>
             <% if (user.description != null) { %>
-               <p><%= user.description %></p>
+               <p><%= user.description.split(" ").slice(0, 10).join(" ") %> ...</p>
             <% } else { %>
-               <p>No Description...</p>
+               <p style="text-align: center;">No Description...</p>
             <% } %>
          </div>
          <div class="socials-container">
@@ -94,7 +94,9 @@
                      <div class="connection-profile">
                         <img src="<%= user.connections[i].profile_image_url %>" alt="profile image">
                         <p class="connection-username"><%= user.connections[i].first_name %> <%= user.connections[i].last_name %></p>
-                        <p class="connection-description"><%= user.connections[i].description %></p>
+                        <% if (user.connections[i].description !== null) { %>
+                           <p class="connection-description"><%= user.connections[i].description.split(" ").slice(0, 5).join(" ") %>...</p>
+                        <% } %>   
                      </div>
                   </li>
                <% }; %>
