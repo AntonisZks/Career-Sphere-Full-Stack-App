@@ -2,7 +2,7 @@ import styles from "./NavigationBar.module.css";
 
 export default function NavigationBar() {
   return (
-    <nav className={styles.navigation_bar}>
+    <nav id="navigationBar" className={styles.navigation_bar}>
       <ul>
         <li>
           <a href="#">

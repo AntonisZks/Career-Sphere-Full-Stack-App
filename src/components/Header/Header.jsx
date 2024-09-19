@@ -17,7 +17,12 @@ export default function Header() {
           <img src={profile_image} alt="profile_picture" />
         </div>
         <div className={styles.expand_menu_container}>
-          <button>
+          <button
+            onClick={() => {
+              const navbar = document.getElementById("navigationBar");
+              (navbar.style.left == '0px') ? navbar.style.left = '-210px' : navbar.style.left = '0px';  
+            }}
+          >
             <i className="fa-solid fa-bars"></i>
           </button>
         </div>
