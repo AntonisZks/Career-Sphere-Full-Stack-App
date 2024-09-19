@@ -1,0 +1,29 @@
+.root_page {
+  background-color: #fff;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: 
+  "header"
+  "mainBody";
+}
+
+.sections_outer_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sections_inner_container {
+  width: 100%;
+  max-width: 1250px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 
+    "profileSidebar postsSection suggestions";
+
+  grid-area: mainBody;
+}

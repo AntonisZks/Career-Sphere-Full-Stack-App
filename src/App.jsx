@@ -1,21 +1,22 @@
 import Header from "./components/Header/Header"
 import ProfileSidebar from "./components/ProfileSidebar/ProfileSidebar"
 import PostsSection from "./components/PostsSection/PostsSection"
+import SuggestionsSection from "./components/SuggestionsSection/SuggestionsSection"
+import styles from './App.module.css'
 
-const styles = {
-  backgroundColor: '#fff',
-  height: '100vh',
-  display: 'grid',
-  gridTemplateColumns: 'auto 1fr',
-  gridTemplateRows: 'auto 1fr',
-  gridTemplateAreas: "'header header' 'profileSidebar postsSection'"
-}
 
 export default function App() {
 
   return (
-    <div className="root-page" style={styles}>
+    <div className={styles.root_page}>
       <Header/>
+      <div className={styles.sections_outer_container}>
+        <div className={styles.sections_inner_container}>
+          <ProfileSidebar/>
+          <PostsSection/>
+          <SuggestionsSection/>
+        </div>
+      </div>
     </div>
   )
 
