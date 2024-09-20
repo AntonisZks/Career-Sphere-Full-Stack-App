@@ -1,7 +1,10 @@
 .post_container {
   background-color: #fff;
   width: 97%;
-  height: 300px;
+  height: auto;
+  padding: 30px 0;
+  margin: 10px;
+
   border: 1px solid rgb(228, 228, 228);
   border-radius: var(--panels_border_radius);
   box-shadow: 0px 0px 10px hsl(0, 0%, 0%, 10%);
@@ -15,27 +18,145 @@
 
 .post_container .post_header {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto auto 1fr 10%;
   grid-template-areas: 
-    "profile_image fullname"
-    "profile_image date";
+    "profile_image fullname follow more"
+    "profile_image date follow more";
+
+  margin: 0 20px;
+
   grid-area: header;
 }
 
 .post_container .post_header img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
   grid-area: profile_image;
+  align-self: center;
 }
 
 .post_container .post_header h1 {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: rgb(62, 62, 62);
+  margin-left: 7px;
   grid-area: fullname;
 }
 
 .post_container .post_header p {
+  font-size: 0.7rem;
+  color: var(--text_light_grey);
+  margin-left: 7px;
   grid-area: date;
 }
 
+.post_container .post_header .follow_button {
+  width: auto;
+  height: auto;
+  justify-self: flex-start;
+  align-self: flex-start;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  padding: 3px 10px;
+  margin-left: 20px;
+
+  font-size: 0.9rem;
+  color: var(--theme_color);
+  
+  background-color: transparent;
+  border: 1px solid var(--theme_color);
+  border-radius: 5px;
+  outline: none;
+
+  transition: 0.2s;
+  cursor: pointer;
+
+  grid-area: follow;
+}
+
+.post_container .post_header .follow_button:hover {
+  background-color: var(--theme_color);
+  color: #fff;
+}
+
+.post_container .post_header .follow_button p {
+  font-family: 'Poppins' Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--theme_color);
+  transition: 0.2s;
+  margin: 0;
+}
+
+.post_container .post_header .follow_button:hover p {
+  color: #fff;
+}
+
+.post_container .post_header .more_button {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  justify-self: center;
+  grid-area: more;
+  cursor: pointer;
+}
+
+.post_container .post_header .more_button:hover {
+  background-color: rgb(241, 241, 241);
+}
+
 .post_container .post_main_content {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
   grid-area: main;
+}
+
+.post_container .post_main_content h1 {
+  font-size: 0.97rem;
+  font-weight: normal;
+  color: rgb(27, 27, 27);
+  padding: 10px 0;
+}
+
+.post_container .post_main_content p {
+  color: rgb(99, 99, 99);
+  text-align: justify;
+  font-size: 0.8rem;
+}
+
+.post_container .post_main_content p button {
+  font-size: 0.8rem;
+  font-weight: normal;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: rgb(164, 164, 164);
+  cursor: pointer;
+}
+
+.post_container .post_main_content p button:hover {
+  color: var(--theme_color);
+  text-decoration: underline;
+}
+
+.post_container .post_main_content img {
+  width: 100%;
+  border-radius: 5px;
+  margin: 15px 0;
 }
 
 .post_container .post_footer {
