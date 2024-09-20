@@ -63,8 +63,8 @@
 
 .header .user_online_container:after {
   content: '';
-  width: var(--profile_image_online_circle_dimensions);
-  height: var(--profile_image_online_circle_dimensions);
+  width: calc(var(--profile_image_online_circle_dimensions) * 0.8);
+  height: calc(var(--profile_image_online_circle_dimensions) * 0.8);
   background-color: rgb(24, 194, 24);
   border: 2px solid #fff;
   border-radius: 50%;

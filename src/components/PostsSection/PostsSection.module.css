@@ -1,4 +1,5 @@
 .posts_section {
   grid-area: postsSection;
-  background-color: rgb(151, 255, 172);
+  /* background-color: rgb(151, 255, 172); */
 }
+
