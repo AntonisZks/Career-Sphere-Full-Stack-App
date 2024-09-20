@@ -1,0 +1,43 @@
+.post_container {
+  background-color: #fff;
+  width: 97%;
+  height: 300px;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: var(--panels_border_radius);
+  box-shadow: 0px 0px 10px hsl(0, 0%, 0%, 10%);
+
+  display: grid;
+  grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+}
+
+.post_container .post_header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: 
+    "profile_image fullname"
+    "profile_image date";
+  grid-area: header;
+}
+
+.post_container .post_header img {
+  grid-area: profile_image;
+}
+
+.post_container .post_header h1 {
+  grid-area: fullname;
+}
+
+.post_container .post_header p {
+  grid-area: date;
+}
+
+.post_container .post_main_content {
+  grid-area: main;
+}
+
+.post_container .post_footer {
+  grid-area: footer;
+}
