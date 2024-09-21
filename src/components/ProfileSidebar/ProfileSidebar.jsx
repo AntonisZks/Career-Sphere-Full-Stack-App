@@ -41,13 +41,13 @@ export default function ProfileSidebar() {
                 <i className="fa-solid fa-users"></i>
                 <div className={styles.associates_counters_container}>
                   <a href="#">
-                    <b>255</b> followers
+                    <b>255K</b> followers
                   </a>
                   <a href="#">
-                    <b>243</b> following
+                    <b>243K</b> following
                   </a>
                   <a href="#">
-                    <b>208</b> friends
+                    <b>208K</b> friends
                   </a>
                 </div>
               </li>

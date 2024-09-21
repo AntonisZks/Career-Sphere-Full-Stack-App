@@ -12,7 +12,7 @@ export default function Header() {
           src={app_logo}
           alt="app_logo"
         />
-        <NavigationBar />
+        <NavigationBar activeTab='homeTab' />
         <div className={styles.user_online_container}>
           <img src={profile_image} alt="profile_picture" />
         </div>
