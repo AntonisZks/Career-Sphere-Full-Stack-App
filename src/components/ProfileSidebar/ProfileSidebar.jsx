@@ -12,9 +12,7 @@ import user9 from "../../assets/images/user9.jpg";
 
 export default function ProfileSidebar() {
   return (
-    <div
-      className={`${styles.profile_sidebar_section} ${section_styles.section}`}
-    >
+    <aside className={`${styles.profile_sidebar_section} ${section_styles.section}`}>
       <div className={styles.outer_container}>
         <div className={`${styles.profile_container} ${styles.panel}`}>
           <img
@@ -118,6 +116,6 @@ export default function ProfileSidebar() {
           </div>
         </div>
       </div>
-    </div>
+    </aside>
   );
 }

@@ -2,12 +2,18 @@
 
 .profile_sidebar_section {
   /* background-color: rgb(151, 207, 255); */
+  height: 900px;
   grid-area: profileSidebar;
+  z-index: 2;
+  position: sticky;
+  top: 68px;
 }
 
 .profile_sidebar_section .outer_container {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 }
 

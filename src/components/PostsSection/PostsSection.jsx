@@ -11,6 +11,9 @@ export default function PostsSection() {
       <PostCreationPanel/>
       <div className={styles.posts_list_outer_container}>
         <UserPost/>
+        <UserPost/>
+        <UserPost/>
+        <UserPost/>
       </div>
     </div>
   )

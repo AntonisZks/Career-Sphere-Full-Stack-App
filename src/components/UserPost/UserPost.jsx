@@ -17,7 +17,7 @@ export default function UserPost() {
     <div className={styles.post_container}>
       <div className={styles.post_header}>
         <img src={user} alt="profile_picture" width='100px' />
-        <h1>James Elijah</h1>
+        <a href='#'><h1>James Elijah</h1></a>
         <p>2 days ago</p>
         <button className={styles.follow_button}>
           <i className="fa-solid fa-plus"></i>

@@ -35,9 +35,18 @@
   object-fit: cover;
   grid-area: profile_image;
   align-self: center;
+  cursor: pointer;
 }
 
-.post_container .post_header h1 {
+.post_container .post_header a {
+  text-decoration: none;
+}
+
+.post_container .post_header a:hover {
+  text-decoration: underline;
+}
+
+.post_container .post_header a h1 {
   font-size: 0.9rem;
   font-weight: normal;
   color: rgb(62, 62, 62);
