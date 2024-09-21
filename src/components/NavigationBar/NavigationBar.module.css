@@ -32,7 +32,7 @@
 
 .navigation_bar ul li a:after {
   content: '';
-  width: 0%;
+  width: var(--afterBack, 0%);
   height: 3px;
   border-radius: 10px;
   background-color: var(--theme_color);

@@ -12,6 +12,11 @@ export default function NavigationBar(props) {
   const active = document.querySelector('.active_tab');
   if (active !== null) {
     console.log(active);
+
+    const active_link = active.getElementsByTagName('a')[0];
+    active_link.style.color = 'rgb(116, 32, 243)';
+    active_link.style.setProperty('--afterBack', '90%');
+    
     
   }
 
