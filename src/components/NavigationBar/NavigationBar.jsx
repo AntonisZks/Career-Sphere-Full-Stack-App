@@ -1,24 +1,27 @@
+import { useEffect } from "react";
 import styles from "./NavigationBar.module.css";
 
 export default function NavigationBar(props) {
 
-  const element = document.getElementById(props.activeTab);
+  useEffect(() => {
+    const element = document.getElementById(props.activeTab);
+    element.classList.remove('active_tab');
 
-  if (element !== null) {
-    // console.log(element);
-    element.classList.add('active_tab');
-  }
-  
-  const active = document.querySelector('.active_tab');
-  if (active !== null) {
-    console.log(active);
+    if (element !== null) {
+      element.classList.add('active_tab');
+    }
+    
+    const active = document.querySelector('.active_tab');
+    if (active !== null) {
+    
+      const active_link = active.getElementsByTagName('a')[0];
+      active_link.style.color = 'rgb(116, 32, 243)';
+      active_link.style.setProperty('--navigationTabAfterWidth', '90%');
+      active_link.style.setProperty('--navigationTabAfterColor', 'rgb(116, 32, 243)');
 
-    const active_link = active.getElementsByTagName('a')[0];
-    active_link.style.color = 'rgb(116, 32, 243)';
-    active_link.style.setProperty('--afterBack', '90%');
-    
-    
-  }
+    }
+
+  }, [props.activeTab]);
 
   return (
     <nav id="navigationBar" className={styles.navigation_bar}>

@@ -1,9 +1,13 @@
+import { useState } from "react";
 import app_logo from "../../assets/images/medium_logo.png";
 import profile_image from "../../assets/images/profile_image.jpg";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import styles from "./Header.module.css";
 
-export default function Header() {
+export default function Header(props) {
+
+  const [activeTab, setActiveTab] = useState(props.activeNavigationTab);
+
   return (
     <div className={styles.header}>
       <div className={styles.header_container}>
@@ -12,7 +16,7 @@ export default function Header() {
           src={app_logo}
           alt="app_logo"
         />
-        <NavigationBar activeTab='homeTab' />
+        <NavigationBar activeTab={activeTab} />
         <div className={styles.user_online_container}>
           <img src={profile_image} alt="profile_picture" />
         </div>

@@ -11,8 +11,10 @@
 }
 
 .navigation_bar ul li {
+  width: auto;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   transition: 0.2s;
   position: relative;
 }
@@ -27,15 +29,15 @@
   text-decoration: none;
   font-size: 0.9rem;
   color: grey;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .navigation_bar ul li a:after {
   content: '';
-  width: var(--afterBack, 0%);
+  width: var(--navigationTabAfterWidth, 0%);
   height: 3px;
   border-radius: 10px;
-  background-color: var(--theme_color);
+  background-color: var(--navigationTabAfterColor, #000);
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -45,11 +47,12 @@
 
 .navigation_bar ul li:hover a:after {
   width: 90%;
+  background-color: #000;
 }
 
-/* .navigation_bar ul li:hover a {
-  color: #fff;
-} */
+.navigation_bar ul li:hover a {
+  color: #000000;
+}
 
 @media (max-width: 1090px) {
 
