@@ -5,6 +5,8 @@
 }
 
 .header {
+  background-color: #fff;
+  
   display: flex;
   flex-direction: row;
   justify-content: center;

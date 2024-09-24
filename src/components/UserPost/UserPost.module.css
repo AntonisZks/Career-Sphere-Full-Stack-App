@@ -256,7 +256,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   font-size: 1rem;
   color: rgb(72, 72, 72);
   margin: 0 3px;
@@ -269,4 +269,12 @@
 
 .post_container .post_footer .react_buttons_container .react_button:hover {
   background-color: rgb(237, 237, 237);
+}
+
+@media (max-width:930px) {
+
+  .post_container {
+    width: 100%;
+  }
+
 }

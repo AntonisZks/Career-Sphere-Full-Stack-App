@@ -80,7 +80,7 @@
 
 .create_post_container .create_post_footer {
   display: grid;
-  grid-template-columns: 55% 45%;
+  grid-template-columns: 55% auto;
   grid-template-areas: "add_files publish";
   align-items: center;
   grid-area: footer;
@@ -154,4 +154,23 @@
 .create_post_container .publish_button:hover {
   background-color: var(--theme_color);
   color: #fff;
+}
+
+@media (max-width:930px) {
+
+  .create_post_container {
+    width: 100%;
+  }
+
+  .create_post_container .create_post_footer {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: "add_files publish";
+  }
+
+  .create_post_container .file_buttons_container button,
+  .create_post_container .publish_button {
+    padding: 7px 0;
+  }
+
 }

@@ -37,7 +37,7 @@
   width: var(--navigationTabAfterWidth, 0%);
   height: 3px;
   border-radius: 10px;
-  background-color: var(--navigationTabAfterColor, #000);
+  background-color: var(--navigationTabAfterColor, rgba(116, 32, 243, 0.729));
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -47,11 +47,11 @@
 
 .navigation_bar ul li:hover a:after {
   width: 90%;
-  background-color: #000;
+  background-color: rgba(116, 32, 243, 0.729);
 }
 
 .navigation_bar ul li:hover a {
-  color: #000000;
+  color: rgba(116, 32, 243, 0.729);
 }
 
 @media (max-width: 1090px) {

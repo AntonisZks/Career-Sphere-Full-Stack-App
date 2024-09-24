@@ -4,3 +4,11 @@
   align-items: flex-start;
   padding-top: 40px;
 }
+
+@media (max-width:930px) {
+
+  .section {
+    padding-top: 10px;
+  }
+
+}

@@ -1,6 +1,6 @@
 .root_page {
-  background-color: #fff;
-  height: 100vh;
+  background-color: hsl(274, 100%, 99%);
+  height: 100%;
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-areas: 
@@ -29,4 +29,35 @@
     "profileSidebar postsSection suggestions";
 
   grid-area: mainBody;
+}
+
+@media (max-width:1265px) {
+
+  .sections_inner_container {
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+      "profileSidebar postsSection";
+  
+    grid-area: mainBody;
+  }
+
+}
+
+@media (max-width:930px) {
+
+  .sections_inner_container {
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+      "profileSidebar"
+      "postsSection";
+  
+    grid-area: mainBody;
+  }
+
 }

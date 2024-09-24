@@ -135,3 +135,26 @@
 .panel_link a:hover {
   text-decoration: underline;
 }
+
+@media (max-width:930px) {
+
+  .profile_sidebar_section {
+    height: auto;
+    grid-area: profileSidebar;
+    z-index: 2;
+    position: static;
+  }
+
+  .connections_container {
+    display: none;
+  }
+
+  .panel {
+    width: 100%;  
+  }
+
+  .profile_container .socials_container {
+    display: none;
+  }
+
+}

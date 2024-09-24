@@ -1,5 +1,5 @@
 .suggestions_section {
-  background-color: #fff;
+  /* background-color: #fff; */
   height: 900px;
   grid-area: suggestions;
   z-index: 2;
@@ -66,4 +66,12 @@
   color: rgb(132, 132, 132);
   margin: 20px 0;
   text-align: center;
+}
+
+@media (max-width:1265px) {
+
+  .suggestions_section {
+    display: none;
+  }
+
 }
