@@ -1,0 +1,39 @@
+.account_suggestion_container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: 
+  "image fullname"
+  "image followers";
+
+  padding: 7px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.account_suggestion_container:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.account_suggestion_container img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  align-self: center;
+
+  grid-area: image;
+}
+
+.account_suggestion_container .suggestion_fullname {
+  color: rgb(98, 98, 98);
+  font-size: 0.9rem;
+  grid-area: fullname;
+  margin-left: 10px;
+}
+
+.account_suggestion_container p {
+  color: rgb(156, 156, 156);
+  font-size: 0.7rem;
+  grid-area: followers;
+  margin-left: 10px;
+}

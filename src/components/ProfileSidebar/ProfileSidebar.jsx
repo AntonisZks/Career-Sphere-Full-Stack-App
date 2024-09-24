@@ -27,7 +27,7 @@ export default function ProfileSidebar() {
           />
           <h1 className={styles.user_fullname}>Antonis Zikas</h1>
           <div className={styles.about_me_container}>
-            <h1 className={styles.panel_section_title}>About Me:</h1>
+            <h1 className={styles.panel_section_title}>About Me</h1>
             <p>
               Hi! I'm a student at University of Athens and I am currently
               studing Computer Sciense at Department of Informatics and
@@ -35,7 +35,7 @@ export default function ProfileSidebar() {
             </p>
           </div>
           <div className={styles.socials_container}>
-            <h1 className={styles.panel_section_title}>My Socials:</h1>
+            <h1 className={styles.panel_section_title}>My Socials</h1>
             <ul>
               <li>
                 <i className="fa-solid fa-users"></i>
@@ -67,7 +67,7 @@ export default function ProfileSidebar() {
         </div>
         <div className={`${styles.connections_container} ${styles.panel}`}>
           <div className={styles.network_container}>
-            <h1 className={styles.panel_section_title}>My Network:</h1>
+            <h1 className={styles.panel_section_title}>My Network</h1>
             <ul>
               <li>
                 <ConnectionProfile
@@ -110,7 +110,7 @@ export default function ProfileSidebar() {
                 />
               </li>
             </ul>
-            <p className={`${styles.shoe_all_message} ${styles.panel_link}`}>
+            <p className={`${styles.show_all_message} ${styles.panel_link}`}>
               <a href="#">Show All</a>
             </p>
           </div>
