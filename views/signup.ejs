@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sign Up</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+   <link rel="stylesheet" href="/styles/authentication.css">
+
+   <script src="https://kit.fontawesome.com/b781edffa7.js" crossorigin="anonymous"></script>
+   <script type="module" src="/js/live_form_validation.js"></script>
+</head>
+
+<body>
+   <div class="sign-up-auth-container auth-container">
+      <div class="auth-header">
+         <div class="app-logo-image-container">
+            <img class="app-logo-image" src="/assets/imgs/logo_big.png" alt="app logo">
+         </div>
+         <div class="welcome-message-container">
+            <p class="welcome-message">Welcome to <b>Career Sphere!</b></p>
+         </div>
+      </div>
+      <div class="auth-main-content">
+         <h1 class="main-content-message">Create an account</h1>
+         <form id="signupForm" class="login-form" novalidate>
+            <div class="sign-up-main-content-inputs-container">
+
+               <div class="text-input-field-container fname-container">
+                  <i class="input-icon fa-solid fa-user"></i>
+                  <input name="firstName" class="text-input-field" id="firstNameInput" type="text"
+                     placeholder="First Name" required onkeyup="validateFirstName()" value="<%= firstName %>">
+                  <i class="success-icon fas fa-check-circle"></i>
+                  <i class="error-icon fas fa-exclamation-circle"></i>
+                  <div class="error-message"></div>
+               </div>
+
+               <div class="text-input-field-container lname-container">
+                  <i class="input-icon fa-regular fa-user"></i>
+                  <input name="lastName" class="text-input-field" id="lastNameInput" type="text" placeholder="Last Name"
+                     required onkeyup="validateLastName()" value="<%= lastName %>">
+                  <i class="success-icon fas fa-check-circle"></i>
+                  <i class="error-icon fas fa-exclamation-circle"></i>
+                  <div class="error-message"></div>
+               </div>
+
+               <div class="text-input-field-container email-container">
+                  <i class="input-icon fa-solid fa-envelope"></i>
+                  <input name="email" class="text-input-field" id="emailInput" type="email" placeholder="Email"
+                     required onkeyup="validateEmail()" value="<%= email %>">
+                  <i class="success-icon fas fa-check-circle"></i>
+                  <i class="error-icon fas fa-exclamation-circle"></i>
+                  <div class="error-message"></div>
+               </div>
+
+               <div class="text-input-field-container password-container">
+                  <i class="input-icon fa-solid fa-lock"></i>
+                  <input name="password" class="text-input-field" id="passwordInput" type="password"
+                     placeholder="Password" required onkeyup="validatePassword()" value="<%= password %>">
+                  <i class="success-icon fas fa-check-circle"></i>
+                  <i class="error-icon fas fa-exclamation-circle"></i>
+                  <div class="error-message"></div>
+               </div>
+
+               <div class="text-input-field-container ver-password-container">
+                  <i class="input-icon fa-solid fa-lock"></i>
+                  <input name="passwordVerification" class="text-input-field" id="passwordVerificationInput"
+                     type="password" placeholder="Verify Password" required onkeyup="validatePasswordVerification()" 
+                     value="<%= passwordVerification %>">
+                  <i class="success-icon fas fa-check-circle"></i>
+                  <i class="error-icon fas fa-exclamation-circle"></i>
+                  <div class="error-message"></div>
+               </div>
+
+               <div class="text-input-field-container phone-container">
+                  <i class="input-icon fa-solid fa-phone"></i>
+                  <input name="phoneNumber" class="text-input-field" id="phoneInput" type="tel"
+                     placeholder="Phone Number" required onkeyup="validatePhoneNumber()" value="<%= phoneNumber %>">
+                  <i class="success-icon fas fa-check-circle"></i>
+                  <i class="error-icon fas fa-exclamation-circle"></i>
+                  <div class="error-message"></div>
+               </div>
+
+               <div class="radio-input-field-container gender-input-field" id="radioInputFieldContainer">
+                  <div class="gender-radio-input male-gender-radio-input">
+                     <input type="radio" id="maleInput" name="gender_radio_input" value="male"
+                        onclick="validateGender()">
+                     <label>Male</label>
+                  </div>
+                  <div class="gender-radio-input female-gender-radio-input">
+                     <input type="radio" id="femaleInput" name="gender_radio_input" value="female"
+                        onclick="validateGender()">
+                     <label>Female</label>
+                  </div>
+                  <div class="error-message"></div>
+               </div>
+
+            </div>
+            <div class="submit-button-container">
+               <button id="submit-button" class="submit-button" type="submit">Sign Up</button>
+            </div>
+            <% if (error) { %>
+               <div class="submition-error-message-container">
+                  <p class="sumbition-error-message"><%= error %></p>
+               </div>
+            <% } %>
+         </form>
+      </div>
+      <div class="auth-footer">
+         <div class="alternative-container">
+            <p>Already have an account? <a href="login">Log In</a></p>
+         </div>
+      </div>
+   </div>
+   <script type="module" src="/js/submit_signup_form.js"></script>
+   <script defer>
+      document.querySelectorAll(".text-input-field-container").forEach(container => {
+         container.addEventListener("click", function () {
+            this.querySelector('.text-input-field').focus();
+         });
+      });
+   </script>
+</body>
+
+</html>

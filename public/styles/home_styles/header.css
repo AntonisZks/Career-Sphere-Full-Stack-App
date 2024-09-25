@@ -1,0 +1,90 @@
+header {
+  top: 0;
+  position: sticky;
+  grid-area: header;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  padding: 0;
+  margin: 0;
+
+  height: 70px;
+  background-color: #fff;
+  z-index: 10;
+}
+header .application-logo {
+  object-fit: contain;
+  width: 200px;
+  height: 50px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+header .navigation-bar {
+  height: 100%;
+}
+header .navigation-bar .navigation-bar-list {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  height: 100%;
+  align-items: center;
+}
+header .navigation-bar .navigation-bar-list li {
+  height: 100%;
+  transition: 0.2s;
+}
+header .navigation-bar .navigation-bar-list li a {
+  color: #812bc6;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  transition: 0.2s;
+  height: 100%;
+  align-items: center;
+  padding: 0 15px;
+  gap: 7px;
+}
+header .navigation-bar .navigation-bar-list li:hover {
+  background-color: rgb(156, 72, 240);
+}
+header .navigation-bar .navigation-bar-list li:hover a {
+  color: #fff;
+}
+header .user-online-container {
+  position: relative;
+  margin-right: 50px;
+  cursor: pointer;
+}
+header .user-online-container .user-profile-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+header .user-online-container::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fff;
+  background-color: rgb(37, 205, 37);
+  border-radius: 50%;
+  right: 0px;
+  bottom: 5px;
+  position: absolute;
+}
+header .expand-menu-container {
+  padding-right: 35px;
+  display: none;
+}
+header .expand-menu-container button {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  color: #6d2ca3;
+}

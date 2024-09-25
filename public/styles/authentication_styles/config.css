@@ -1,0 +1,15 @@
+/* constants for styling */
+
+:root {
+   --poppins-font-family: "Poppins", Arial, Helvetica, sans-serif;
+   --arial-font-family: Arial, Helvetica, sans-serif;
+
+   --text-theme-color: rgb(106, 50, 166);
+   --input-field-background-color: #eaeaea;
+   --input-field-focus-background-color: rgb(220, 220, 220);
+   --text-grey: #999;
+   --text-dark-grey: #838383;
+   --text-light-grey: #cacaca;
+   --input-field-success-color: #09c372;
+   --input-field-error-color: #ff3860;
+}

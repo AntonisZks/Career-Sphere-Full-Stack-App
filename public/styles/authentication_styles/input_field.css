@@ -1,0 +1,108 @@
+@import url("config.css");
+
+/* Input Field styling */
+
+.auth-main-content .text-input-field-container .input-icon {
+   transition: 0.2s;
+}
+
+.auth-main-content .text-input-field-container {
+   width: 100%;
+   background-color: var(--input-field-background-color);
+   margin: 10px 0 20px;
+   border: 2px solid #fff;
+   border-radius: 8px;
+   display: flex;
+   align-items: center;
+   position: relative;
+   height: 60px;
+}
+.auth-main-content .success-icon, .auth-main-content .error-icon {
+   width: 10px;
+}
+.auth-main-content .text-input-field-container.success {
+   border-color: var(--input-field-success-color);
+}
+.auth-main-content .text-input-field-container.error {
+   border-color: var(--input-field-error-color);
+}
+.auth-main-content .text-input-field-container .error-message {
+   color: var(--input-field-error-color);
+   font-size: 0.8rem;
+   height: 23px;
+   position: absolute;
+   margin-top: 90px;
+   margin-left: 10px;
+}
+.auth-main-content .text-input-field-container .fas.fa-check-circle {
+   color: var(--input-field-success-color);
+   position: relative;
+   right: -40px;
+   visibility: hidden;
+}
+.auth-main-content .text-input-field-container .fas.fa-exclamation-circle {
+   color: var(--input-field-error-color);
+   position: relative;
+   visibility: hidden;
+}
+.auth-main-content .radio-input-field-container {
+   width: 100%;
+   margin: 10px 0 20px;
+   display: grid;
+   grid-template-columns: 20% 1fr;
+   grid-template-areas: 
+   "maleSelector femaleSelector"
+   "genderError genderError";
+   padding-left: 15px;
+   color: var(--text-dark-grey);
+}
+.auth-main-content .radio-input-field-container .gender-radio-input {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 8px;
+}
+.auth-main-content .radio-input-field-container .male-gender-radio-input {
+   grid-area: maleSelector;
+}
+.auth-main-content .radio-input-field-container .female-gender-radio-input {
+   grid-area: femaleSelector;
+}
+.auth-main-content .radio-input-field-container input {
+   accent-color: var(--text-theme-color);
+   width: 17px;
+   height: 17px;
+   cursor: pointer;
+}
+.auth-main-content .radio-input-field-container .error-message {
+   grid-area: genderError;
+   color: var(--input-field-error-color);
+   font-size: 0.8rem;
+   margin-top: 35px;
+   position: absolute;
+}
+.auth-main-content .text-input-field-container input {
+   width: 100%;
+   background: transparent;
+   border: none;
+   outline: none;
+   padding: 18 15px;
+   font-size: 1rem;
+}
+.auth-main-content .text-input-field-container input:focus {
+   outline: 0;
+}
+.auth-main-content .text-input-field-container i {
+   margin: 0 15px;
+   color: var(--text-grey);
+}
+.auth-main-content .text-input-field-container:hover {
+   background-color: var(--input-field-focus-background-color);
+   cursor: text;
+}
+.auth-main-content .text-input-field-container:focus-within .input-icon {
+   color: var(--text-theme-color);
+}
+/* .auth-main-content .text-input-field-container:focus-within {
+   border-color: var(--text-theme-color);
+} */

@@ -1,0 +1,42 @@
+@import url("config.css");
+
+/* Header styling */
+
+.auth-header {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.auth-header .app-logo-image-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.auth-header .app-logo-image {
+   width: 100%;
+}
+.auth-header .welcome-message-container {
+   color: var(--text-theme-color);
+   font-size: 1.7rem;
+   padding: 10px 0 0 0;
+}
+.auth-header .welcome-message-container .welcome-message {
+   overflow: hidden;
+   border-right: .15em solid var(--text-theme-color);
+   white-space: nowrap;
+   margin: 0 auto;
+   letter-spacing: 0.1rem;
+   animation:
+      typing 1.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+}
+
+/* Welcome message animations */
+
+@keyframes typing {
+   from { width: 0 }
+   to {width: 100% }
+}
+@keyframes blink-caret {
+   from, to {border-color: transparent }
+}

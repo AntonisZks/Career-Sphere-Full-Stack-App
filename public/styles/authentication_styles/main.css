@@ -1,0 +1,37 @@
+@import url("config.css");
+@import url("form.css");
+
+/* Main content styling */
+
+.auth-main-content {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 15px 0;
+   width: 80%;
+}
+.auth-main-content .main-content-message {
+   font-size: 2rem;
+   color: var(--text-theme-color);
+}
+.auth-main-content {
+   width: 100%;
+}
+
+/* Forgot password styling */
+
+.auth-main-content .forgot-password-message-container {
+   margin-top: 10px;
+}
+.auth-main-content .forgot-password-message-container a {
+   text-decoration: none;
+   color: var(--text-theme-color);
+}
+.auth-main-content .forgot-password-message-container a:hover {
+   text-decoration: underline;
+}
+
+.auth-main-content .submit-button-container .submit-button:hover {
+   background-color: var(--text-theme-color);
+   color: #fff;
+}
