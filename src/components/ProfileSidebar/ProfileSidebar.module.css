@@ -136,7 +136,7 @@
   text-decoration: underline;
 }
 
-@media (max-width:930px) {
+@media (max-width:930px) and (min-height: 1000px) {
 
   .profile_sidebar_section {
     height: auto;
@@ -202,5 +202,42 @@
     font-size: 0.6rem;
     margin-top: 10px;
   }  
+
+}
+
+@media (max-height:1000px) and (max-width: 715px) {
+
+  .profile_sidebar_section {
+    height: auto;
+    grid-area: profileSidebar;
+    z-index: 2;
+    position: static;
+  }
+
+  .profile_container {
+    border: 0px;
+    box-shadow: none;
+  }
+
+  .profile_container .banner_image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; 
+  }
+
+  .connections_container {
+    display: none;
+  }
+
+  .panel {
+    width: 100%;  
+    border-radius: 0px;
+  }
+
+  .profile_container .socials_container {
+    display: none;
+  }
 
 }

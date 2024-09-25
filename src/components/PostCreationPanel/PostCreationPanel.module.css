@@ -101,7 +101,7 @@
 .create_post_container .file_buttons_container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: row;
   grid-area: add_files;
 }
@@ -156,7 +156,7 @@
   color: #fff;
 }
 
-@media (max-width:930px) {
+@media (max-width:930px) and (min-height: 1000px) {
 
   .create_post_container {
     width: 100%;
@@ -165,6 +165,70 @@
   .create_post_container .create_post_footer {
     display: grid;
     grid-template-columns: auto auto;
+    grid-template-areas: "add_files publish";
+  }
+
+  .create_post_container .file_buttons_container button,
+  .create_post_container .publish_button {
+    padding: 7px 0;
+  }
+
+}
+
+@media (max-height: 1000px) {
+
+  .create_post_container img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .create_post_container h1 {
+    font-size: 0.7rem;
+  }
+
+  .create_post_container .post_title_input {
+    font-family: 'Poppins' Arial, Helvetica, sans-serif;
+    font-size: 0.6rem;
+  }
+  
+  .create_post_container .post_description_input {
+    font-family: 'Poppins' Arial, Helvetica, sans-serif;
+    font-size: 0.6rem;
+  }
+
+  .create_post_container .post_title_input::placeholder,
+  .create_post_container .post_description_input::placeholder {
+    font-size: 0.6rem;
+  }
+
+  .create_post_container .create_post_footer {
+    display: grid;
+    grid-template-columns: 65% auto;
+    grid-template-areas: "add_files publish";
+    align-items: center;
+    grid-area: footer;
+    margin: 20px;
+  }
+
+  .create_post_container .file_buttons_container button,
+  .create_post_container .publish_button {
+    font-size: 0.6rem;
+  }
+
+}
+
+@media (max-height:1000px) and (max-width: 715px) {
+
+  .create_post_container {
+    width: 100%;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: none;
+  }
+
+  .create_post_container .create_post_footer {
+    display: grid;
+    grid-template-columns: 60% auto;
     grid-template-areas: "add_files publish";
   }
 

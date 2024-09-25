@@ -31,7 +31,7 @@
   grid-area: mainBody;
 }
 
-@media (max-width:1265px) {
+@media (max-width:1265px) and (min-height: 1000px) {
 
   .sections_inner_container {
     max-width: 900px;
@@ -46,7 +46,7 @@
 
 }
 
-@media (max-width:930px) {
+@media (max-width:930px) and (min-height: 1000px) {
 
   .sections_inner_container {
     max-width: 600px;
@@ -62,7 +62,7 @@
 
 }
 
-@media (max-height: 1000px) {
+@media (max-height: 1000px) and (min-width: 1015px) {
 
   .sections_inner_container {
     max-width: 1000px;
@@ -72,6 +72,48 @@
     grid-template-areas: 
       "profileSidebar postsSection suggestions";
     
+    grid-area: mainBody;
+  }
+
+}
+
+@media (max-height: 1000px) and (max-width:1015px) {
+
+  .sections_inner_container {
+    max-width: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+      "profileSidebar postsSection";
+    
+    grid-area: mainBody;
+  }
+
+}
+
+@media (max-height:1000px) and (max-width: 715px) {
+
+  .sections_outer_container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+    position: sticky;
+    top: 0;
+  }
+
+  .sections_inner_container {
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+      "profileSidebar"
+      "postsSection";
+    
+    grid-area: mainBody;
   }
 
 }

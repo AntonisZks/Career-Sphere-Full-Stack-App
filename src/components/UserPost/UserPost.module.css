@@ -271,10 +271,67 @@
   background-color: rgb(237, 237, 237);
 }
 
-@media (max-width:930px) {
+@media (max-width:930px) and (min-height: 1000px) {
 
   .post_container {
     width: 100%;
+  }
+
+}
+
+@media (max-height: 1000px) {
+
+  .post_container .post_header img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .post_container .post_header a h1 {
+    font-size: 0.7rem;
+  }
+
+  .post_container .post_header p {
+    font-size: 0.6rem;
+  }
+
+  .post_container .post_header .follow_button {
+    font-size: 0.7rem;
+  }
+
+  .post_container .post_header .follow_button p {
+    font-size: 0.7rem;
+  }
+
+  .post_container .post_header .more_button {
+    font-size: 0.8rem;
+  }
+
+  .post_container .post_main_content h1 {
+    font-size: 0.8rem;
+  }
+  
+  .post_container .post_main_content p {
+    font-size: 0.6rem;
+  }
+
+  .post_container .post_main_content p button {
+    font-size: 0.6rem;
+  }
+
+  .post_container .post_footer .react_buttons_container .react_button {
+    font-size: 0.8rem;
+  }
+
+}
+
+@media (max-height:1000px) and (max-width: 715px) {
+
+  .post_container {
+    width: 100%;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: none;
+    margin: 0;
   }
 
 }
