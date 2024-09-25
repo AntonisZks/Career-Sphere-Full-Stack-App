@@ -40,7 +40,7 @@
     grid-template-rows: 1fr;
     grid-template-areas: 
       "profileSidebar postsSection";
-  
+    
     grid-area: mainBody;
   }
 
@@ -56,8 +56,22 @@
     grid-template-areas: 
       "profileSidebar"
       "postsSection";
-  
+    
     grid-area: mainBody;
+  }
+
+}
+
+@media (max-height: 1000px) {
+
+  .sections_inner_container {
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+      "profileSidebar postsSection suggestions";
+    
   }
 
 }

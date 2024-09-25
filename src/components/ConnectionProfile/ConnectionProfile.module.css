@@ -10,6 +10,7 @@
   padding: 7px 5px;
   position: relative;
 }
+
 .connection_profile_container:after {
   content: '';
   height: 1px;
@@ -48,4 +49,39 @@
   color: var(--text_light_grey);
   margin-left: 10px;
   grid-area: description;
+}
+
+@media (max-height: 1000px) {
+
+  .connection_profile_container {
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+    "image fullname"
+    "image description";
+    cursor: pointer;
+    padding: 4px 5px;
+    position: relative;
+  }
+
+  .connection_profile_container img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .connection_profile_container h1 {
+    font-size: 0.5rem;
+    font-weight: bold;
+  }
+
+  .connection_profile_container p {
+    font-size: 0.4rem;
+    font-weight: normal;
+    color: var(--text_light_grey);
+    margin-left: 10px;
+    grid-area: description;
+  }
+  
 }

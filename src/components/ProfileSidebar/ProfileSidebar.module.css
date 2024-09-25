@@ -36,8 +36,7 @@
   height: 100px;
   object-fit: cover;
   border-top-left-radius: var(--panels_border_radius);
-  border-top-right-radius: var(--panels_border_radius);
-  
+  border-top-right-radius: var(--panels_border_radius); 
 }
 
 .profile_container .profile_image {
@@ -132,6 +131,7 @@
   font-size: 0.8rem;
   margin-top: 10px;
 }
+
 .panel_link a:hover {
   text-decoration: underline;
 }
@@ -156,5 +156,51 @@
   .profile_container .socials_container {
     display: none;
   }
+
+}
+
+
+@media (max-height: 1000px) {
+
+  .profile_sidebar_section {
+    /* background-color: rgb(151, 207, 255); */
+    height: 700px;
+    top: 68px;
+  }
+
+  .profile_container .banner_image {
+    height: 70px;
+  }
+
+  .profile_container .profile_image {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #fff;
+  }
+
+  .profile_container .user_fullname {
+    font-size: 0.8rem;
+  }
+
+  .panel_section_title {
+    font-size: 0.7rem;
+  }
+
+  .profile_container .about_me_container p {
+    font-size: 0.5rem;
+  }
+
+  .profile_container .socials_container ul li {
+    font-size: 0.55rem;
+  }
+
+  .panel_link a {
+    display: flex;
+    justify-content: center;
+    color: var(--theme_color);
+    text-decoration: none;
+    font-size: 0.6rem;
+    margin-top: 10px;
+  }  
 
 }

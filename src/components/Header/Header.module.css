@@ -136,3 +136,21 @@
   }
 
 }
+
+@media (max-height: 1000px) {
+
+  .header .application_logo {
+    width: 100px;
+  }
+
+  .header .user_online_container img {
+    width: calc(0.8*var(--header_profile_image_dimensions));
+    height: calc(0.8*var(--header_profile_image_dimensions));
+  }
+
+  .header .user_online_container:after {
+    width: calc(0.8*var(--profile_image_online_circle_dimensions) * 0.8);
+    height: calc(0.8*var(--profile_image_online_circle_dimensions) * 0.8);
+  }
+
+}
