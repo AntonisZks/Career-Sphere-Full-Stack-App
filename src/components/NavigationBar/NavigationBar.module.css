@@ -1,0 +1,139 @@
+.navigation_bar {
+  height: 100%;
+}
+
+.navigation_bar ul {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  list-style: none;
+}
+
+.navigation_bar ul li {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  transition: 0.2s;
+  position: relative;
+}
+
+.navigation_bar ul li a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 10px;
+  gap: 3px;
+
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: grey;
+  transition: 0.3s;
+}
+
+.navigation_bar ul li a:after {
+  content: '';
+  width: var(--navigationTabAfterWidth, 0%);
+  height: 3px;
+  border-radius: 10px;
+  background-color: var(--navigationTabAfterColor, rgba(116, 32, 243, 0.729));
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  transition: 0.3s ease;
+}
+
+.navigation_bar ul li:hover a:after {
+  width: 90%;
+  background-color: rgba(116, 32, 243, 0.729);
+}
+
+.navigation_bar ul li:hover a {
+  color: rgba(116, 32, 243, 0.729);
+}
+
+@media (max-width: 1090px) {
+
+  .navigation_bar ul li a {
+    font-size: 0.8rem;
+    padding: 0 8px;
+  }
+
+}
+
+@media (max-width: 975px) {
+
+  .navigation_bar ul li {
+    padding: 0;
+  }
+
+  .navigation_bar ul li a {
+    padding: 0 20px;
+  }
+
+  .navigation_bar ul li a i {
+    font-size: 1.1rem;
+  }
+
+  .navigation_bar ul li a p {
+    display: none;
+  }
+
+}
+
+@media (max-width: 715px) {
+
+  .navigation_bar ul li a {
+    padding: 0 15px;
+  }
+
+}
+
+@media (max-width: 640px) {
+
+  .navigation_bar {
+    display: block;
+    left: -210px;
+    position: fixed;
+    background-color: #fff;
+    position: absolute;
+    width: 200px;
+    height: 100vh;
+    top: 0;
+    border-right: 1px solid rgb(230, 230, 230);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    transition: 0.3s ease;
+  }
+
+  .navigation_bar ul {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navigation_bar ul li {
+    width: 100%;
+    padding: 15px 0;
+    border-bottom: 1px solid rgb(237, 237, 237);
+  }
+
+  .navigation_bar ul li a {
+    font-size: 1rem;
+  }
+
+  .navigation_bar ul li a p {
+    display: block;
+    margin: 0 10px;
+  }
+
+}
+
+@media (max-height: 1000px) {
+
+  .navigation_bar ul li a {
+    font-size: 0.65rem;
+  }
+
+}

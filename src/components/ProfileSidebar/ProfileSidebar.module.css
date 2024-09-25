@@ -1,0 +1,243 @@
+
+
+.profile_sidebar_section {
+  /* background-color: rgb(151, 207, 255); */
+  height: 900px;
+  grid-area: profileSidebar;
+  z-index: 2;
+  position: sticky;
+  top: 68px;
+}
+
+.profile_sidebar_section .outer_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.panel {
+  background-color: #fff;
+  width: 90%;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: var(--panels_border_radius);
+  box-shadow: 0px 0px 10px hsl(0, 0%, 0%, 10%);
+}
+
+.profile_container {
+  height: auto;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+.profile_container .banner_image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-top-left-radius: var(--panels_border_radius);
+  border-top-right-radius: var(--panels_border_radius); 
+}
+
+.profile_container .profile_image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 5%;
+  margin-top: -15%;
+  border: 3px solid #fff;
+}
+
+.profile_container .user_fullname {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin-left: 5%;
+  margin-bottom: 3%;
+}
+
+.profile_container .about_me_container,
+.profile_container .socials_container,
+.connections_container .network_container {
+  padding: 2% 5%;
+}
+
+.panel_section_title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text_grey);
+}
+
+.profile_container .about_me_container p {
+  font-size: 0.7rem;
+  font-weight: normal;
+  color: var(--text_light_grey);
+}
+
+.profile_container .socials_container:after {
+  content: '';
+  width: 90%;
+  height: 1px;
+  background-color: rgb(237, 237, 237);
+  position: absolute;
+}
+
+.profile_container .socials_container ul {
+  list-style: none;
+  padding: 10px 0;
+  color: var(--text_grey);
+}
+
+.profile_container .socials_container ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 0.73rem;
+  gap: 10px;
+  padding: 3px 0;
+}
+
+.profile_container .socials_container ul li .associates_counters_container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.profile_container .socials_container ul li .associates_counters_container a {
+  text-decoration: none;
+  color: var(--text_grey);
+}
+
+.profile_container .socials_container ul li .associates_counters_container a:hover {
+  text-decoration: underline;
+  color: var(--theme_color);
+}
+
+.connections_container {
+  height: auto;
+  padding: 15px 0;
+}
+
+.connections_container .network_container ul {
+  list-style: none;
+  padding: 15px 0;
+}
+
+.panel_link a {
+  display: flex;
+  justify-content: center;
+  color: var(--theme_color);
+  text-decoration: none;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+.panel_link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width:930px) and (min-height: 1000px) {
+
+  .profile_sidebar_section {
+    height: auto;
+    grid-area: profileSidebar;
+    z-index: 2;
+    position: static;
+  }
+
+  .connections_container {
+    display: none;
+  }
+
+  .panel {
+    width: 100%;  
+  }
+
+  .profile_container .socials_container {
+    display: none;
+  }
+
+}
+
+
+@media (max-height: 1000px) {
+
+  .profile_sidebar_section {
+    /* background-color: rgb(151, 207, 255); */
+    height: 700px;
+    top: 68px;
+  }
+
+  .profile_container .banner_image {
+    height: 70px;
+  }
+
+  .profile_container .profile_image {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #fff;
+  }
+
+  .profile_container .user_fullname {
+    font-size: 0.8rem;
+  }
+
+  .panel_section_title {
+    font-size: 0.7rem;
+  }
+
+  .profile_container .about_me_container p {
+    font-size: 0.5rem;
+  }
+
+  .profile_container .socials_container ul li {
+    font-size: 0.55rem;
+  }
+
+  .panel_link a {
+    display: flex;
+    justify-content: center;
+    color: var(--theme_color);
+    text-decoration: none;
+    font-size: 0.6rem;
+    margin-top: 10px;
+  }  
+
+}
+
+@media (max-height:1000px) and (max-width: 715px) {
+
+  .profile_sidebar_section {
+    height: auto;
+    grid-area: profileSidebar;
+    z-index: 2;
+    position: static;
+  }
+
+  .profile_container {
+    border: 0px;
+    box-shadow: none;
+  }
+
+  .profile_container .banner_image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; 
+  }
+
+  .connections_container {
+    display: none;
+  }
+
+  .panel {
+    width: 100%;  
+    border-radius: 0px;
+  }
+
+  .profile_container .socials_container {
+    display: none;
+  }
+
+}

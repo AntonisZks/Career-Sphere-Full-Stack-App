@@ -1,0 +1,119 @@
+.root_page {
+  background-color: hsl(274, 100%, 99%);
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: 
+  "header"
+  "mainBody";
+}
+
+.sections_outer_container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 68px;
+  position: sticky;
+  top: 0;
+}
+
+.sections_inner_container {
+  width: 100%;
+  max-width: 1250px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 
+    "profileSidebar postsSection suggestions";
+
+  grid-area: mainBody;
+}
+
+@media (max-width:1265px) and (min-height: 1000px) {
+
+  .sections_inner_container {
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+      "profileSidebar postsSection";
+    
+    grid-area: mainBody;
+  }
+
+}
+
+@media (max-width:930px) and (min-height: 1000px) {
+
+  .sections_inner_container {
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+      "profileSidebar"
+      "postsSection";
+    
+    grid-area: mainBody;
+  }
+
+}
+
+@media (max-height: 1000px) and (min-width: 1015px) {
+
+  .sections_inner_container {
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+      "profileSidebar postsSection suggestions";
+    
+    grid-area: mainBody;
+  }
+
+}
+
+@media (max-height: 1000px) and (max-width:1015px) {
+
+  .sections_inner_container {
+    max-width: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+      "profileSidebar postsSection";
+    
+    grid-area: mainBody;
+  }
+
+}
+
+@media (max-height:1000px) and (max-width: 715px) {
+
+  .sections_outer_container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+    position: sticky;
+    top: 0;
+  }
+
+  .sections_inner_container {
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+      "profileSidebar"
+      "postsSection";
+    
+    grid-area: mainBody;
+  }
+
+}

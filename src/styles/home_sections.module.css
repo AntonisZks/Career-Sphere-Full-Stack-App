@@ -1,0 +1,30 @@
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+@media (max-width:930px) and (min-height: 1000px) {
+
+  .section {
+    padding-top: 10px;
+  }
+
+}
+
+@media (max-height: 1000px) {
+
+  .section {
+    padding-top: 15px;
+  }
+
+}
+
+@media (max-height:1000px) and (max-width: 715px) {
+
+  .section {
+    padding-top: 0px;
+  }
+
+}
