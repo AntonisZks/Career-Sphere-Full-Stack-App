@@ -30,11 +30,7 @@ export default function AppImage(props) {
 
   return (
     <>
-      {imageSrc ? (
-        <img className={props.className} src={imageSrc} alt={props.alt} />
-      ) : (
-        <p>Loading...</p>
-      )}
+      <img className={props.className} src={imageSrc} alt={props.alt} />
     </>
   )
 
