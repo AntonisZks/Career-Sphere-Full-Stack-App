@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import app_logo from "../../assets/images/medium_logo.png";
-import profile_image from "../../assets/images/profile_image.jpg";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import styles from "./Header.module.css";
+import AppImage from "../AppImage/AppImage";
 
 export default function Header(props) {
 
   const [activeTab, setActiveTab] = useState(props.activeNavigationTab);
+  const [profileImage, setProfileImage] = useState(props.user_data.profile_image_url);
+
+  useEffect(() => {
+
+    setProfileImage(props.user_data.profile_image_url);
+
+  }, [props.user_data.profile_image_url]);
 
   return (
     <div className={styles.header}>
@@ -18,7 +25,11 @@ export default function Header(props) {
         />
         <NavigationBar activeTab={activeTab} />
         <div className={styles.user_online_container}>
-          <img src={profile_image} alt="profile_picture" />
+          <AppImage 
+            src={props.user_data.profile_image_url} 
+            className={styles.online_image} 
+            alt="profile_picture" 
+          />
         </div>
         <div className={styles.expand_menu_container}>
           <button

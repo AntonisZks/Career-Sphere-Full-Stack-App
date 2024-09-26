@@ -74,6 +74,12 @@
   color: var(--text_light_grey);
 }
 
+.profile_container .about_me_container .no_description_message {
+  color: rgb(193, 193, 193);
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
 .profile_container .socials_container:after {
   content: '';
   width: 90%;

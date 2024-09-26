@@ -58,7 +58,7 @@
   display: flex;
 }
 
-.header .user_online_container img {
+.header .user_online_container .online_image {
   width: var(--header_profile_image_dimensions);
   height: var(--header_profile_image_dimensions);
   object-fit: cover;
