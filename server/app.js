@@ -2,8 +2,13 @@
 
 const express = require('express');
 const session = require('express-session');
+const cors = require('cors');
 const path = require('path');
 const app = express();
+
+const corsOptions = {
+   origin: "http://127.0.0.1:5173"
+};
 
 // Set the view engine and the directory where HTML files are located
 app.set('view engine', 'ejs');
@@ -18,7 +23,8 @@ app.use(session({
    resave: false,
    saveUninitialized: true,
    cookie: { secure: false }
-}))
+}));
+app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 8080; // Setup the port of the server
 

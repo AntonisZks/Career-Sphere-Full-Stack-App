@@ -20,7 +20,7 @@ const { getUserSocialsInfo, getUserConnections } = require('../models/user');
 exports.getUserHomePage = async function (request, response) {
 
   // Get the user with the corresponding id passed at the url
-  const userID = request.query.uid;
+  const userID = request.params.userID;
 
   // Receive the user corresponding to the given ID from the database, and if they 
   // doesn't exist send a 404 error as a response
@@ -65,11 +65,14 @@ exports.getUserHomePage = async function (request, response) {
       : `/home/profile_image/${profileImage.image_id}`;
 
     connection.profile_image_url = profileImageUrl;
-  
+    if (connection.description == null) {
+      connection.description = '';
+    }
+    
   }
 
   // Send the HTML code of the home page as a response to the client
-  return response.status(200).render('home', { user: user });
+  return response.status(200).json({...user});
 
 }
 
