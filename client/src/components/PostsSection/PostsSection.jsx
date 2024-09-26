@@ -7,14 +7,20 @@ import UserPost from '../UserPost/UserPost'
 import ai from '../../assets/images/ai.jpg'
 import group from '../../assets/images/group.jpg'
 import uoa from '../../assets/images/uoa.jpg'
+import { useState, useEffect } from 'react'
 
 
+export default function PostsSection(props) {
 
-export default function PostsSection() {
+  const [userData, setUserData] = useState(props.user_data);
+
+  useEffect(() => {
+    setUserData(props.user_data);
+  });
 
   return (
     <div className={`${styles.posts_section} ${section_styles.section}`}>
-      <PostCreationPanel/>
+      <PostCreationPanel image_src={userData.profile_image_url}/>
       <div className={styles.posts_list_outer_container}>
         <UserPost image={ai}/>
         <UserPost image={group}/>

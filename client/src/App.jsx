@@ -16,7 +16,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/home/24', {method: 'GET'});
+        const response = await fetch('http://localhost:8080/home/25', {method: 'GET'});
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -45,7 +45,7 @@ export default function App() {
       <div className={styles.sections_outer_container}>
         <div className={styles.sections_inner_container}>
           <ProfileSidebar user_data={data}/>
-          <PostsSection/>
+          <PostsSection user_data={data}/>
           <SuggestionsSection/>
         </div>
       </div>

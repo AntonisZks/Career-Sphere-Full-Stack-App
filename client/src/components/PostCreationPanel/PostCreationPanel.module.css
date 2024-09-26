@@ -26,9 +26,9 @@
   margin-bottom: 5px;
 }
 
-.create_post_container img {
-  width: 45px;
-  height: 45px;
+.create_post_container .profile_img_title_container .profile_image {
+  width: 30px;
+  height: 30px;
   object-fit: cover;
   border-radius: 50%;
 }

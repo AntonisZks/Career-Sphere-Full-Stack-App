@@ -89,7 +89,7 @@
     padding: 10px 0;
   }
 
-  .header .user_online_container img {
+  .header .user_online_container .online_image {
     width: calc(var(--header_profile_image_dimensions)*0.8);
     height: calc(var(--header_profile_image_dimensions)*0.8);
   }
@@ -108,7 +108,7 @@
     margin-left: 20px;
   }
 
-  .header .user_online_container img {
+  .header .user_online_container .online_image {
     width: var(--header_profile_image_dimensions);
     height: var(--header_profile_image_dimensions);
   }
@@ -143,7 +143,7 @@
     width: 100px;
   }
 
-  .header .user_online_container img {
+  .header .user_online_container .online_image {
     width: calc(0.8*var(--header_profile_image_dimensions));
     height: calc(0.8*var(--header_profile_image_dimensions));
   }

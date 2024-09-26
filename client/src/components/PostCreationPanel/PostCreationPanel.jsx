@@ -2,13 +2,26 @@ import AutoResizeTextarea from '../AutoResizeTextarea/AutoResizeTextarea'
 import profile_image from '../../assets/images/profile_image.jpg'
 
 import styles from './PostCreationPanel.module.css'
+import { useEffect, useState } from 'react';
+import AppImage from '../AppImage/AppImage';
 
 
-export default function PostCreationPanel() {
+export default function PostCreationPanel(props) {
+
+  const [profileImage, setProfileImage] = useState(props.image_src);
+
+  useEffect(() => {
+    setProfileImage(props.image_src);
+  });
+
   return (
     <div className={styles.create_post_container}>
       <div className={styles.profile_img_title_container}>
-        <img src={profile_image} alt="profile picture" />
+        <AppImage 
+          src={profileImage} 
+          className={styles.profile_image} 
+          alt="profile picture" 
+        />
         <h1>What's On Your Mind?</h1>
       </div>
       <input
