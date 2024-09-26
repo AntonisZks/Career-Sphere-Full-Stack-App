@@ -1,9 +1,8 @@
-import AutoResizeTextarea from '../AutoResizeTextarea/AutoResizeTextarea'
-import profile_image from '../../assets/images/profile_image.jpg'
+import AutoResizeTextarea from '../../../../common/components/AutoResizeTextarea/AutoResizeTextarea'
 
 import styles from './PostCreationPanel.module.css'
 import { useEffect, useState } from 'react';
-import AppImage from '../AppImage/AppImage';
+import AppImage from '../../../../common/components/AppImage/AppImage';
 
 
 export default function PostCreationPanel(props) {

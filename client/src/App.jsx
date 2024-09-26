@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
-import Header from "./components/Header/Header"
-import ProfileSidebar from "./components/ProfileSidebar/ProfileSidebar"
-import PostsSection from "./components/PostsSection/PostsSection"
-import SuggestionsSection from "./components/SuggestionsSection/SuggestionsSection"
+import Header from "./common/components/Header/Header"
+import LeftSidebar from "./pages/HomePage/templates/LeftSidebar/LeftSidebar"
+import PostsSection from "./pages/HomePage/templates/PostsSection/PostsSection"
+import RightSection from "./pages/HomePage/templates/RightSection/RightSection"
 import styles from './App.module.css'
 
 
@@ -16,7 +16,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/home/25', {method: 'GET'});
+        const response = await fetch('http://localhost:8080/home/23', {method: 'GET'});
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -44,9 +44,9 @@ export default function App() {
       <Header activeNavigationTab={activeNavigationTab} user_data={data}/>
       <div className={styles.sections_outer_container}>
         <div className={styles.sections_inner_container}>
-          <ProfileSidebar user_data={data}/>
+          <LeftSidebar user_data={data}/>
           <PostsSection user_data={data}/>
-          <SuggestionsSection/>
+          <RightSection/>
         </div>
       </div>
     </div>

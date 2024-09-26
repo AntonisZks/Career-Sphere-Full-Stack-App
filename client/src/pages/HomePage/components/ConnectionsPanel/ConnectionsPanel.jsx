@@ -1,10 +1,10 @@
-import ConnectionProfile from "../ConnectionProfile/ConnectionProfile";
+import ConnectionProfile from "../../components/ConnectionProfile/ConnectionProfile";
 
 import { useState, useEffect } from 'react';
-import styles from './ConnectionsContainer.module.css'
+import styles from './ConnectionsPanel.module.css'
 
 
-export default function ConnectionsContainer(props) {
+export default function ConnectionsPanel(props) {
 
   const [connections, setConnections] = useState(props.connections);
 

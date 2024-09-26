@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import AppImage from '../AppImage/AppImage';
-import styles from './ProfileContainer.module.css'
+import AppImage from '../../../../common/components/AppImage/AppImage';
+import styles from './ProfilePanel.module.css'
 
 
-export default function ProfileContainer(props) {
+export default function ProfilePanel(props) {
 
   const [userData, setUserData] = useState(props.user_data);
 
@@ -29,7 +29,7 @@ export default function ProfileContainer(props) {
       <div className={styles.about_me_container}>
         <h1 className={styles.panel_section_title}>About Me</h1>
         {userData.description ? (
-          <p>{userData.description}</p>
+          <p>{userData.description.split(' ').slice(0, 10).join(' ')} ...</p>
         ) : (
           <p className={styles.no_description_message}>No Description...</p>
         )}

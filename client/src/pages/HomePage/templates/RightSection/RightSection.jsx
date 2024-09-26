@@ -1,18 +1,16 @@
-import styles from "./SuggestionsSection.module.css";
-import section_styles from "../../styles/home_sections.module.css";
+import styles from "./RightSection.module.css";
+import section_styles from "../../../../styles/home_sections.module.css";
 
-import AccountSuggestionSmall from "../AccountSuggestionSmall/AccountSuggestionSmall";
+import AccountSuggestionSmall from "../../components/AccountSuggestionSmall/AccountSuggestionSmall";
 
-import user from "../../assets/images/user.jpg";
-import user2 from "../../assets/images/user2.jpg";
-import user3 from "../../assets/images/user3.jpg";
-import user4 from "../../assets/images/user4.jpg";
-import user5 from "../../assets/images/user5.jpg";
-import user6 from "../../assets/images/user6.jpg";
-import user7 from "../../assets/images/user7.jpg";
-import user8 from "../../assets/images/user8.jpg";
+import user from "../../../../assets/images/user.jpg";
+import user2 from "../../../../assets/images/user2.jpg";
+import user3 from "../../../../assets/images/user3.jpg";
+import user4 from "../../../../assets/images/user4.jpg";
+import user5 from "../../../../assets/images/user5.jpg";
+import user6 from "../../../../assets/images/user6.jpg";
 
-export default function SuggestionsSection() {
+export default function RightSection() {
   return (
     <>
       <aside

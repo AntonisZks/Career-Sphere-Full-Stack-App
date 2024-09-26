@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import app_logo from "../../assets/images/medium_logo.png";
+import app_logo from "../../../assets/images/medium_logo.png";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import styles from "./Header.module.css";
 import AppImage from "../AppImage/AppImage";

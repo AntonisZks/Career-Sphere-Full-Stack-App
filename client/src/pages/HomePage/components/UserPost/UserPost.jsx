@@ -1,6 +1,6 @@
 import styles from './UserPost.module.css'
 
-import user from '../../assets/images/user.jpg'
+import user from '../../../../assets/images/user.jpg'
 
 
 export default function UserPost(props) {

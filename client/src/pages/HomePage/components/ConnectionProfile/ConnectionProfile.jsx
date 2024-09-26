@@ -1,4 +1,4 @@
-import AppImage from '../AppImage/AppImage'
+import AppImage from '../../../../common/components/AppImage/AppImage'
 import styles from './ConnectionProfile.module.css'
 
 

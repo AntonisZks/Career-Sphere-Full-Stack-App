@@ -1,11 +1,11 @@
-import styles from "./ProfileSidebar.module.css";
-import section_styles from "../../styles/home_sections.module.css";
+import styles from "./LeftSidebar.module.css";
+import section_styles from "../../../../styles/home_sections.module.css";
 
 import { useEffect, useState } from "react";
-import ProfileContainer from "../ProfileContainer/ProfileContainer";
-import ConnectionsContainer from "../ConnectionsContainer/ConnectionsContainer";
+import ProfileContainer from "../../components/ProfilePanel/ProfilePanel";
+import ConnectionsContainer from "../../components/ConnectionsPanel/ConnectionsPanel";
 
-export default function ProfileSidebar(props) {
+export default function LeftSidebar(props) {
 
   const [userData, setUserData] = useState(props.user_data);
   const [connections, setConnections] = useState(props.user_data.connections);

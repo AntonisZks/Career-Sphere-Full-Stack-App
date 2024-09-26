@@ -1,12 +1,12 @@
 import styles from './PostsSection.module.css'
-import section_styles from '../../styles/home_sections.module.css'
+import section_styles from '../../../../styles/home_sections.module.css'
 
-import PostCreationPanel from '../PostCreationPanel/PostCreationPanel'
-import UserPost from '../UserPost/UserPost'
+import PostCreationPanel from '../../components/PostCreationPanel/PostCreationPanel'
+import UserPost from '../../components/UserPost/UserPost'
 
-import ai from '../../assets/images/ai.jpg'
-import group from '../../assets/images/group.jpg'
-import uoa from '../../assets/images/uoa.jpg'
+import ai from '../../../../assets/images/ai.jpg'
+import group from '../../../../assets/images/group.jpg'
+import uoa from '../../../../assets/images/uoa.jpg'
 import { useState, useEffect } from 'react'
 
 
