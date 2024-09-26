@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import Header from "./common/components/Header/Header"
+import Header from "./common/templates/Header/Header"
 import LeftSidebar from "./pages/HomePage/templates/LeftSidebar/LeftSidebar"
 import PostsSection from "./pages/HomePage/templates/PostsSection/PostsSection"
 import RightSection from "./pages/HomePage/templates/RightSection/RightSection"

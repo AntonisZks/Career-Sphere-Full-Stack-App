@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 
 const corsOptions = {
-   origin: "http://127.0.0.1:5173"
+   origin: "http://localhost:5173"
 };
 
 // Set the view engine and the directory where HTML files are located
