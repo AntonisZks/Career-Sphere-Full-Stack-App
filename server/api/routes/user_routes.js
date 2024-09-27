@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const homeController = require('../controllers/homeControllers');
+const userController = require('../controllers/userControllers');
+
+router.get('/:userID/profileImage', userController.getUserProfileImageUrl);
+router.get('/profileImages/:imageID', userController.getProfileImageURL);
 
 router.get('/:userID', homeController.getUserHomePage);
 router.get('/profile_image/:imageID', homeController.getUserProfileImageUrl);

@@ -19,14 +19,14 @@ export default function PostsSection(props) {
   });
 
   return (
-    <div className={`${styles.posts_section} ${section_styles.section}`}>
+    <section className={`${styles.posts_section} ${section_styles.section}`}>
       <PostCreationPanel image_src={userData.profile_image_url}/>
       <div className={styles.posts_list_outer_container}>
         <UserPost image={ai}/>
         <UserPost image={group}/>
         <UserPost image={uoa}/>
       </div>
-    </div>
+    </section>
   )
 
 }

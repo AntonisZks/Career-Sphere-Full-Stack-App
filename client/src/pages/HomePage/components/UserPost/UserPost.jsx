@@ -28,7 +28,10 @@ export default function UserPost(props) {
       </div>
       <div className={styles.post_main_content}>
         <h1>Excited to Announce My New Role at TechCorp!</h1>
-        <p id='postDescription'>{post_description.split(" ").splice(0, 20).join(" ")} <button onClick={fillPostDescription}>...read more</button></p>
+        <p id='postDescription'>
+          {post_description.split(" ").splice(0, 20).join(" ")}
+          <button onClick={fillPostDescription}>...read more</button>
+        </p>
         <img src={props.image} alt="post image"/>
       </div>
       <div className={styles.post_footer}>
@@ -56,7 +59,7 @@ export default function UserPost(props) {
           </button>
           <button className={styles.react_button}>
             <i className="fa-regular fa-thumbs-down"></i>
-            <p>Disike</p>
+            <p>Dislike</p>
           </button>
           <button className={styles.react_button}>
             <i className="fa-regular fa-comment-dots"></i>

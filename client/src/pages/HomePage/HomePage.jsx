@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react"
 import Header from "../../common/templates/Header/Header"
-import LeftSidebar from "../../pages/HomePage/templates/LeftSidebar/LeftSidebar"
+import LeftSection from "./templates/LeftSection/LeftSection.jsx"
 import PostsSection from "../../pages/HomePage/templates/PostsSection/PostsSection"
 import RightSection from "../../pages/HomePage/templates/RightSection/RightSection"
 import styles from './HomePage.module.css'
 
 
-export default function HomePage() {
+export default function HomePage({ userID }) {
 
   const [activeNavigationTab, setActiveNavigationTab] = useState('homeTab');
   const [data, setData] = useState(null);
@@ -16,7 +16,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/home/23', {method: 'GET'});
+        const response = await fetch(`http://localhost:8080/users/${userID}`, {method: 'GET'});
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -33,6 +33,8 @@ export default function HomePage() {
     };
 
     fetchData();
+    setActiveNavigationTab('homeTab');
+
   }, []);
 
   if (loading) return <p>Loading...</p>;
@@ -41,14 +43,14 @@ export default function HomePage() {
   return (
     
     <div className={styles.root_page}>
-      <Header activeNavigationTab={activeNavigationTab} user_data={data}/>
-      <div className={styles.sections_outer_container}>
-        <div className={styles.sections_inner_container}>
-          <LeftSidebar user_data={data}/>
-          <PostsSection user_data={data}/>
-          <RightSection/>
-        </div>
-      </div>
+      <Header activeNavigationTab={activeNavigationTab} userID={userID}/>
+      {/*<div className={styles.sections_outer_container}>*/}
+      {/*  <div className={styles.sections_inner_container}>*/}
+      {/*    <LeftSection user_data={data}/>*/}
+      {/*    <PostsSection user_data={data}/>*/}
+      {/*    <RightSection/>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </div>
   )
 

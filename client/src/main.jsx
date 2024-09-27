@@ -11,15 +11,15 @@ import './main.css';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage/>
+    element: <HomePage userID={23}/>
   },
   {
     path: '/home',
-    element: <HomePage/>
+    element: <HomePage userID={23}/>
   },
   {
     path: '/network',
-    element: <NetworkPage/>
+    element: <NetworkPage userID={23}/>
   }
 ]);
 

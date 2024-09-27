@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 
 const corsOptions = {
-   origin: "http://localhost:5173"
+   origin: "http://127.0.0.1:5173"
 };
 
 // Set the view engine and the directory where HTML files are located
@@ -30,11 +30,11 @@ const PORT = process.env.PORT || 8080; // Setup the port of the server
 
 // Routes
 const authRoutes = require('./api/routes/auth_routes');
-const homeRoutes = require('./api/routes/home_routes');
+const userRoutes = require('./api/routes/user_routes');
 
 // Use routes
 app.use('/', authRoutes);
-app.use('/home', homeRoutes);
+app.use('/users', userRoutes);
 
 
 // Start the server execution

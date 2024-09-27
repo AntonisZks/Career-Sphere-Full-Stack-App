@@ -35,15 +35,15 @@ exports.getUserHomePage = async function (request, response) {
   let bannerImage = await getUserBannerImageByID(userID);
   bannerImageUrl = (bannerImage == null) 
     ? null 
-    : `/home/banner_image/${bannerImage.image_id}`;
+    : `/user/banner_image/${bannerImage.image_id}`;
 
   // Construct the profile image url path according to the user profile image
   // If the user does not have a profile image send a default profile image as a response
   let profileImageUrl = '';
   let profileImage = await getUserProfileImageByID(userID);
   profileImageUrl = (profileImage == null)
-    ? `/home/profile_image/default/${user.gender}`
-    : `/home/profile_image/${profileImage.image_id}`;
+    ? `/user/profile_image/default/${user.gender}`
+    : `/user/profile_image/${profileImage.image_id}`;
 
   // Add the bannder and profile image url as a property to the user object
   user.profile_image_url = profileImageUrl;
@@ -61,8 +61,8 @@ exports.getUserHomePage = async function (request, response) {
     let profileImageUrl = '';
     let profileImage = await getUserProfileImageByID(connection.user_id);
     profileImageUrl = (profileImage == null)
-      ? `/home/profile_image/default/${connection.gender}`
-      : `/home/profile_image/${profileImage.image_id}`;
+      ? `/user/profile_image/default/${connection.gender}`
+      : `/user/profile_image/${profileImage.image_id}`;
 
     connection.profile_image_url = profileImageUrl;
     if (connection.description == null) {

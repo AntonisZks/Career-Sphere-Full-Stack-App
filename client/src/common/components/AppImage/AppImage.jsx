@@ -24,7 +24,9 @@ export default function AppImage(props) {
       }
     };
 
-    fetchImage();
+    if (props.src !== null) {
+      fetchImage();
+    }
 
   }, [props.src]);
 

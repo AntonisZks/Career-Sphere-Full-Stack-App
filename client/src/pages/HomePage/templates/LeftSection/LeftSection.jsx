@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import ProfileContainer from "../../components/ProfilePanel/ProfilePanel";
 import ConnectionsContainer from "../../components/ConnectionsPanel/ConnectionsPanel";
 
-export default function LeftSidebar(props) {
+
+export default function LeftSection(props) {
 
   const [userData, setUserData] = useState(props.user_data);
   const [connections, setConnections] = useState(props.user_data.connections);
@@ -19,10 +20,10 @@ export default function LeftSidebar(props) {
 
   return (
     <aside className={`${styles.profile_sidebar_section} ${section_styles.section}`}>
-      <div className={styles.outer_container}>
+      <section className={styles.outer_container}>
         <ProfileContainer user_data={userData}/>
         <ConnectionsContainer connections={connections}/>
-      </div>
+      </section>
     </aside>
   );
 }

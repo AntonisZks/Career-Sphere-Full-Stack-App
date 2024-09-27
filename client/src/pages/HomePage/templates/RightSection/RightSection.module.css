@@ -61,14 +61,6 @@
   text-decoration: underline;
 }
 
-.suggestions_section footer {
-  font-size: 0.8rem;
-  width: 100%;
-  color: rgb(132, 132, 132);
-  margin: 20px 0;
-  text-align: center;
-}
-
 @media (max-width:1265px) and (min-height: 1000px) {
 
   .suggestions_section {
@@ -84,10 +76,6 @@
   }
 
   .panel_link a {
-    font-size: 0.6rem;
-  }
-
-  .suggestions_section footer {
     font-size: 0.6rem;
   }
 
