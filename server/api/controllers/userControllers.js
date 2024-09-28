@@ -1,5 +1,25 @@
-const { getUserProfileImageByID, getUserByID} = require('../models/user');
+const { getUserProfileImageByID, getUserByID, getUserSocialsInfo, getUserBannerImageByID} = require('../models/user');
 const {db_pool} = require("../../config/db_config");
+
+
+exports.getUserProfileData = async function (request, response) {
+
+  const user = await getUserByID(request.params.userID);
+  const socials = await getUserSocialsInfo(request.params.userID, null);
+
+  return response.json({
+    firstName: user.first_name,
+    lastName: user.last_name,
+    description: user.description,
+
+    socials: {
+      ...socials,
+      email: user.email,
+      phoneNumber: user.phone_number,
+    }
+  });
+
+}
 
 
 exports.getUserProfileImageUrl = async function (request, response) {
@@ -9,34 +29,23 @@ exports.getUserProfileImageUrl = async function (request, response) {
 
   const profileImage = await getUserProfileImageByID(userID);
   const profileImageURL = (profileImage === null)
-    ? `/users/profileImages/default_${user.gender}`
-    : `/users/profileImages/${profileImage.image_id}`
+    ? `/images/profileImages/default_${user.gender}`
+    : `/images/profileImages/${profileImage.image_id}`
 
   return response.status(200).json({'url': profileImageURL});
 
 }
 
-exports.getProfileImageURL = async function (request, response) {
+exports.getUserBannerImageUrl = async function (request, response) {
 
-  const imageID = request.params.imageID;
+  const userID = request.params.userID;
+  const user = await getUserByID(userID);
 
-  const sqlImageQuery = "SELECT data FROM profile_images WHERE image_id = ?";
-  db_pool.query(sqlImageQuery, [imageID], (error, results) => {
+  const bannerImage = await getUserBannerImageByID(userID);
+  const bannerImageURL = (bannerImage === null)
+    ? null
+    : `/images/bannerImages/${bannerImage.image_id}`
 
-    if (error) {
-      return response.status(500).send("Error receiving profile image");
-    }
-
-    if (results.length === 1) {
-      const image = results[0];
-      response.contentType("image/jpeg");
-
-      return response.send(image.data);
-    }
-    else {
-      return response.status(404).send("Image not found");
-    }
-
-  });
+  return response.status(200).json({'url': bannerImageURL});
 
 }

@@ -3,13 +3,10 @@ const router = express.Router();
 const homeController = require('../controllers/homeControllers');
 const userController = require('../controllers/userControllers');
 
-router.get('/:userID/profileImage', userController.getUserProfileImageUrl);
-router.get('/profileImages/:imageID', userController.getProfileImageURL);
 
-router.get('/:userID', homeController.getUserHomePage);
-router.get('/profile_image/:imageID', homeController.getUserProfileImageUrl);
-router.get('/banner_image/:imageID', homeController.getUserBannerImageUrl);
-router.get('/profile_image/default/male', homeController.getDefaultMaleProfileImage);
-router.get('/profile_image/default/female', homeController.getDefaultFemaleProfileImage);
+router.get('/:userID/profileData', userController.getUserProfileData);
+router.get('/:userID/profileImage', userController.getUserProfileImageUrl);
+router.get('/:userID/bannerImage', userController.getUserBannerImageUrl);
+
 
 module.exports = router;

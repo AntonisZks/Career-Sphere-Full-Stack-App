@@ -5,26 +5,28 @@ import styles from './ProfilePanel.module.css'
 
 export default function ProfilePanel(props) {
 
+  const [bannerImageURL, setBannerImageURL] = useState(props.banner_image);
+  const [profileImageURL, setProfileImage] = useState(props.profile_image);
   const [userData, setUserData] = useState(props.user_data);
 
   useEffect(() => {
     setUserData(props.user_data);
-  });
+  }, []);
 
   return (
     <div className={`${styles.profile_container} ${styles.panel}`}>
       <AppImage
-        src={userData.banner_image_url}
+        src={bannerImageURL}
         className={styles.banner_image}
         alt="banner image"
       />
       <AppImage
-        src={userData.profile_image_url}
+        src={profileImageURL}
         className={styles.profile_image}
         alt="profile image"
       />
       <h1 className={styles.user_fullname}>
-        {userData.first_name} {userData.last_name}
+        {userData.firstName} {userData.lastName}
       </h1>
       <div className={styles.about_me_container}>
         <h1 className={styles.panel_section_title}>About Me</h1>
@@ -41,23 +43,23 @@ export default function ProfilePanel(props) {
             <i className="fa-solid fa-users"></i>
             <div className={styles.associates_counters_container}>
               <a href="#">
-                <b>{userData.followersCount}</b> followers
+                <b>{userData.socials.followers}</b> followers
               </a>
               <a href="#">
-                <b>{userData.followingCount}</b> following
+                <b>{userData.socials.following}</b> following
               </a>
               <a href="#">
-                <b>{userData.friendsCount}</b> friends
+                <b>{userData.socials.friends}</b> friends
               </a>
             </div>
           </li>
           <li>
             <i className="fa-solid fa-envelope"></i>
-            <p>{userData.email}</p>
+            <p>{userData.socials.email}</p>
           </li>
           <li>
             <i className="fa-solid fa-phone"></i>
-            <p>{userData.phone_number}</p>
+            <p>{userData.socials.phoneNumber}</p>
           </li>
         </ul>
       </div>

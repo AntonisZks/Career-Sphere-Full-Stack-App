@@ -20,11 +20,7 @@ async function userExistsWithEmail(email) {
   const sqlQuery = "SELECT * FROM users WHERE email = ?"
   const results = await executeQuery(sqlQuery, [email]);
 
-  if (results.length == 1) {
-    return true;
-  }
-
-  return false;
+  return results.length === 1;
 
 }
 
@@ -70,19 +66,19 @@ async function getUserBannerImageByID(userID) {
 
 async function getUserSocialsInfo(userID, type) {
 
-  if (type == 'followers') {
+  if (type === 'followers') {
     const sqlQuery = `SELECT COUNT(*) AS 'followers' FROM users_follow_users WHERE following_id = ?`;
     const results = await executeQuery(sqlQuery, [userID]);
 
     return results[0].followers;
   }
-  else if (type == 'following') {
+  else if (type === 'following') {
     const sqlQuery = `SELECT COUNT(*) AS 'following' FROM users_follow_users WHERE follower_id = ?`;
     const results = await executeQuery(sqlQuery, [userID]);
 
     return results[0].following;
   }
-  else if (type == 'friends') {
+  else if (type === 'friends') {
     const sqlQuery = `
       SELECT COUNT(u1.following_id) AS friends FROM users_follow_users u1
       JOIN users_follow_users u2 ON u1.follower_id = u2.following_id AND u1.following_id = u2.follower_id
@@ -91,6 +87,13 @@ async function getUserSocialsInfo(userID, type) {
     const results = await executeQuery(sqlQuery, [userID]);
 
     return results[0].friends;
+  }
+  else if (type === null) {
+    return {
+      'followers': await getUserSocialsInfo(userID, 'followers'),
+      'following': await getUserSocialsInfo(userID, 'following'),
+      'friends': await getUserSocialsInfo(userID, 'friends'),
+    }
   }
 
 }

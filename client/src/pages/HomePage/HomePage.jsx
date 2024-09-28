@@ -13,44 +13,44 @@ export default function HomePage({ userID }) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://localhost:8080/users/${userID}`, {method: 'GET'});
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const result = await response.json();
-        setData(result);
-      } 
-      catch (err) {
-        setError(err);
-      } 
-      finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-    setActiveNavigationTab('homeTab');
-
-  }, []);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(`http://localhost:8080/users/${userID}`, {method: 'GET'});
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+  //
+  //       const result = await response.json();
+  //       setData(result);
+  //     }
+  //     catch (err) {
+  //       setError(err);
+  //     }
+  //     finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //
+  //   fetchData();
+  //   setActiveNavigationTab('homeTab');
+  //
+  // }, []);
+  //
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error: {error.message}</p>;
 
   return (
     
     <div className={styles.root_page}>
       <Header activeNavigationTab={activeNavigationTab} userID={userID}/>
-      {/*<div className={styles.sections_outer_container}>*/}
-      {/*  <div className={styles.sections_inner_container}>*/}
-      {/*    <LeftSection user_data={data}/>*/}
-      {/*    <PostsSection user_data={data}/>*/}
-      {/*    <RightSection/>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
+      <div className={styles.sections_outer_container}>
+        <div className={styles.sections_inner_container}>
+          <LeftSection userID={userID}/>
+          {/*<PostsSection user_data={data}/>*/}
+          {/*<RightSection/>*/}
+        </div>
+      </div>
     </div>
   )
 

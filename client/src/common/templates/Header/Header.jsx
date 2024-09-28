@@ -23,6 +23,7 @@ export default function Header(props) {
 
   const [activeTab, setActiveTab] = useState(props.activeNavigationTab);
   const [profileImageUrl, setProfileImageUrl] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
 
@@ -30,22 +31,25 @@ export default function Header(props) {
       try {
 
         const response = await fetch(`http://localhost:8080/users/${props.userID}/profileImage`, {method: 'GET'});
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
         const profileImage = await response.json();
         setProfileImageUrl(profileImage.url);
-      }
-      catch (error) {
-        setProfileImageUrl(null);
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
       }
 
     }
-    setActiveTab(props.activeNavigationTab);
 
+    setActiveTab(props.activeNavigationTab);
     fetchUserProfileImage();
 
-  }, [props.userID, props.activeNavigationTab]);
+  }, [props.activeNavigationTab, props.userID]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={styles.header}>
@@ -53,7 +57,13 @@ export default function Header(props) {
 
         <ApplicationLogo/>
         <NavigationBar activeTab={activeTab} />
-        <OnlineImage profile_image_src={profileImageUrl}/>
+        <div className={styles.user_online_container}>
+          <AppImage
+            src={profileImageUrl}
+            className={styles.online_image}
+            alt="profile_picture"
+          />
+        </div>
         <ExpandMenu/>
 
       </div>
@@ -99,7 +109,7 @@ function OnlineImage(props) {
 
   useEffect(() => {
     setProfileImage(props.profile_image_src);
-  })
+  }, []);
 
   return (
     <div className={styles.user_online_container}>
