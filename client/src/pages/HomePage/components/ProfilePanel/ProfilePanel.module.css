@@ -33,6 +33,14 @@
   border-top-right-radius: var(--panels_border_radius); 
 }
 
+.profile_container .default_banner_male {
+  background-color: #3f94b5;
+}
+
+.profile_container .default_banner_female {
+  background-color: #75ac4d;
+}
+
 .profile_container .profile_image {
   width: 80px;
   height: 80px;

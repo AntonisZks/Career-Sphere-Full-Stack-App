@@ -4,6 +4,9 @@ import AppImage from "../../components/AppImage/AppImage";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 
 import app_logo from "../../../assets/images/medium_logo.png";
+import default_profile_image_male from '../../../assets/images/default_profile_image_male.png'
+import default_profile_image_female from '../../../assets/images/default_profile_image_female.png'
+
 import styles from "./Header.module.css";
 
 
@@ -23,29 +26,33 @@ export default function Header(props) {
 
   const [activeTab, setActiveTab] = useState(props.activeNavigationTab);
   const [profileImageUrl, setProfileImageUrl] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [userGender, setUserGender] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
     const fetchUserProfileImage = async () => {
       try {
+        const response = await fetch(`http://localhost:8080/users/${props.userID}/profileImage`, { method: 'GET' });
+        const response2 = await fetch(`http://localhost:8080/users/${props.userID}/gender`, { method: 'GET' });
 
-        const response = await fetch(`http://localhost:8080/users/${props.userID}/profileImage`, {method: 'GET'});
         const profileImage = await response.json();
+        const response2Results = await response2.json();
+
         setProfileImageUrl(profileImage.url);
+        setUserGender(response2Results.gender);
 
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
-
-    }
+    };
 
     setActiveTab(props.activeNavigationTab);
     fetchUserProfileImage();
 
   }, [props.activeNavigationTab, props.userID]);
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -57,13 +64,7 @@ export default function Header(props) {
 
         <ApplicationLogo/>
         <NavigationBar activeTab={activeTab} />
-        <div className={styles.user_online_container}>
-          <AppImage
-            src={profileImageUrl}
-            className={styles.online_image}
-            alt="profile_picture"
-          />
-        </div>
+        <OnlineImage profile_image_src={profileImageUrl} user_gender={userGender}/>
         <ExpandMenu/>
 
       </div>
@@ -113,11 +114,30 @@ function OnlineImage(props) {
 
   return (
     <div className={styles.user_online_container}>
-      <AppImage 
-        src={profileImage} 
-        className={styles.online_image} 
-        alt="profile_picture" 
-      />
+      {(profileImage !== null) ? (
+        <AppImage
+          src={profileImage}
+          className={styles.online_image}
+          alt="profile_picture"
+        />
+      ) : (
+        <>
+          {(props.user_gender === 'male') ? (
+            <img
+              src={default_profile_image_male}
+              className={styles.online_image}
+              alt="profile_picture"
+            />
+          ) : (
+            <img
+              src={default_profile_image_female}
+              className={styles.online_image}
+              alt="profile_picture"
+            />
+          )}
+        </>
+      )}
+
     </div>
   )
 

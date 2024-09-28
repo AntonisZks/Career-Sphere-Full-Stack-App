@@ -54,7 +54,7 @@ export default function LeftSection(props) {
         <ProfileContainer
           banner_image={userBannerImageURL}
           profile_image={userProfileImageURL}
-          user_data={userProfileData}/>
+          user_data={{'id': userID, ...userProfileData}}/>
         {/*<ConnectionsContainer connections={connections}/>*/}
       </section>
     </aside>
