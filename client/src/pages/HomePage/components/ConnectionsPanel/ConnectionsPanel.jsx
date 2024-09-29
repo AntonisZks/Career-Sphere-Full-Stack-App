@@ -12,18 +12,20 @@ export default function ConnectionsPanel(props) {
     setConnections(props.connections);
   });
 
+  // Render JSX code of the ConnectionsPanel component and its subcomponents
   return (
     <div className={`${styles.connections_container} ${styles.panel}`}>
       <div className={styles.network_container}>
         <h1 className={styles.panel_section_title}>My Network</h1>
         <ul>
-          {connections.map((number, index) => (
+          {props.connections.map((number, index) => (
             <li key={index}>
               <ConnectionProfile
                 image_src={connections[index].profile_image_url}
                 firstname={connections[index].first_name}
                 lastname={connections[index].last_name}
                 description={connections[index].description}
+                gender={connections[index].gender}
               />
             </li>
           ))}

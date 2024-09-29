@@ -1,4 +1,4 @@
-const { getUserByID, getUserSocialsInfo } = require('../models/user');
+const { getUserByID, getUserSocialsInfo, getUserConnections } = require('../models/user');
 const { getUserProfileImageByID, getUserBannerImageByID } = require('../models/user');
 
 exports.getUserProfileData = async function (request, response) {
@@ -53,5 +53,22 @@ exports.getUserGender = async function (request, response) {
 
   const user = await getUserByID(request.params.userID);
   return response.status(200).json({'gender': user.gender});
+
+}
+
+exports.getConnections = async function (request, response) {
+
+  const connections = await getUserConnections(request.params.userID);
+
+  for (let connection of connections) {
+
+    const profileImage = await getUserProfileImageByID(connection.user_id);
+    connection.profile_image_url = (profileImage === null)
+      ? null
+      : `/images/profileImages/${profileImage.image_id}`;
+
+  }
+
+  return response.status(200).send(connections);
 
 }
