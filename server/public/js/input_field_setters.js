@@ -7,7 +7,7 @@
  * @param {HTMLElement} element The HTML element (usually an input field).
  * @param {String} message The error message to display.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 export function setError(element, message) {
    
@@ -34,7 +34,7 @@ export function setError(element, message) {
  * 
  * @param {HTMLElement} element The HTML element (usually an input field).
  * 
- * @AntonisZks 
+ * @author AntonisZks 
  */
 export function setSuccess(element) {
 

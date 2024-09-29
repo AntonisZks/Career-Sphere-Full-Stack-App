@@ -10,7 +10,7 @@ const { getUserByEmail, userExistsWithEmail, insertDataIntoDatabase } = require(
  * @param {any} request the HTTP request 
  * @param {any} response the HTTP response
  * 
- * @AntonisZks
+ * @author AntonisZks
  * @since 1.0.0
  * @date 09/09/2024
  */
@@ -66,7 +66,7 @@ exports.renderSignUpPage = async function (request, response) {
  * @param {any} request the HTTP request 
  * @param {any} response the HTTP response
  * 
- * @AntonisZks
+ * @author AntonisZks
  * @since 1.0.0
  * @date 09/09/2024
  */
@@ -119,7 +119,7 @@ exports.createNewAccount = async function (request, response) {
  * @param {any} request the HTTP request 
  * @param {any} response the HTTP response
  * 
- * @AntonisZks
+ * @author AntonisZks
  * @since 1.0.0
  * @date 09/09/2024
  */

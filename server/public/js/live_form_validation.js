@@ -28,7 +28,7 @@ function setResults(results, element) {
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 function validateFirstName() {
 
@@ -45,7 +45,7 @@ function validateFirstName() {
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 function validateLastName() {
 
@@ -62,7 +62,7 @@ function validateLastName() {
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 function validateEmail() {
 
@@ -79,7 +79,7 @@ function validateEmail() {
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 function validatePassword() {
 
@@ -96,7 +96,7 @@ function validatePassword() {
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 function validatePasswordVerification() {
 
@@ -115,7 +115,7 @@ function validatePasswordVerification() {
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 function validatePhoneNumber() {
 

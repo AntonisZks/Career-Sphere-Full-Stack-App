@@ -13,7 +13,7 @@ const { getUserSocialsInfo, getUserConnections } = require('../models/user');
  * 
  * @returns the appropriate response back to the client 
  * 
- * @AntonisZks
+ * @author AntonisZks
  * @since 1.0.0
  * @date 06/09/2024
  */
@@ -84,7 +84,7 @@ exports.getUserHomePage = async function (request, response) {
  * 
  * @returns the appropriate response back to the client
  * 
- * @AntonisZks
+ * @author AntonisZks
  * @since 1.0.0
  * @date 06/09/2024
  */
@@ -104,7 +104,7 @@ exports.getDefaultMaleProfileImage = function (request, response) {
  * 
  * @returns the appropriate response back to the client
  * 
- * @AntonisZks
+ * @author AntonisZks
  * @since 1.0.0
  * @date 06/09/2024
  */
@@ -125,7 +125,7 @@ exports.getDefaultFemaleProfileImage = function (request, response) {
  * 
  * @return the appropriate response back to the client
  * 
- * @AntonisZks
+ * @author AntonisZks
  * @since 1.0.0
  * @date 06/09/2024
  */

@@ -18,7 +18,7 @@ import styles from "./Header.module.css";
  * @param {any} props the properties of the header component
  * @returns the header XML code
  * 
- * @AntonisZks
+ * @author AntonisZks
  * @since 1.0.0
  * @date 27/09/2024
  */
@@ -58,13 +58,14 @@ export default function Header(props) {
     return <div>Loading...</div>;
   }
 
+  // Render JSX code of the header component with its individual subcomponents
   return (
     <div className={styles.header}>
       <div className={styles.header_container}>
 
         <ApplicationLogo/>
         <NavigationBar activeTab={activeTab} />
-        <OnlineImage profile_image_src={profileImageUrl} user_gender={userGender}/>
+        <OnlineImage profile_image_src={profileImageUrl} gender={userGender}/>
         <ExpandMenu/>
 
       </div>
@@ -79,7 +80,7 @@ export default function Header(props) {
  * 
  * @returns XML code for the application logo
  * 
- * @AntonisZks
+ * @author AntonisZks
  * @since 1.0.0
  * @date 27/09/2024
  */
@@ -100,44 +101,31 @@ function ApplicationLogo() {
  * @param {any} props the properties of the OnlineImage
  * @returns XML code of the OnlineImage
  * 
- * @AntonisZks
+ * @author AntonisZks
  * @since 1.0.0
  * @date 27/09/2024
  */
 function OnlineImage(props) {
 
   const [profileImage, setProfileImage] = useState(props.profile_image_src);
+  let ProfileImage;
 
   useEffect(() => {
     setProfileImage(props.profile_image_src);
   }, []);
 
+  // Handle profile image logic
+  if (profileImage !== null) {
+    ProfileImage = <AppImage src={profileImage} alt="profile picture" className={styles.online_image}/>
+  } else {
+    ProfileImage = props.gender === 'male'
+      ? <img src={default_profile_image_male} className={styles.online_image} alt="profile_picture"/>
+      : <img src={default_profile_image_female} className={styles.online_image} alt="profile_picture"/>
+  }
+
   return (
     <div className={styles.user_online_container}>
-      {(profileImage !== null) ? (
-        <AppImage
-          src={profileImage}
-          className={styles.online_image}
-          alt="profile_picture"
-        />
-      ) : (
-        <>
-          {(props.user_gender === 'male') ? (
-            <img
-              src={default_profile_image_male}
-              className={styles.online_image}
-              alt="profile_picture"
-            />
-          ) : (
-            <img
-              src={default_profile_image_female}
-              className={styles.online_image}
-              alt="profile_picture"
-            />
-          )}
-        </>
-      )}
-
+      {ProfileImage}
     </div>
   )
 
@@ -149,7 +137,7 @@ function OnlineImage(props) {
  * 
  * @returns XML code of the expand menu component
  * 
- * @AntonisZks
+ * @author AntonisZks
  * @since 1.0.0
  * @date 27/09/2024
  */

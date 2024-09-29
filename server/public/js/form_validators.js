@@ -7,7 +7,7 @@ import { EMAIL_REGEX, PHONE_REGEX } from './config.js';
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 export function isFirstNameValid(firstNameValue) {
 
@@ -32,7 +32,7 @@ export function isFirstNameValid(firstNameValue) {
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 export function isLastNameValid(lastNameValue) {
 
@@ -57,7 +57,7 @@ export function isLastNameValid(lastNameValue) {
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 export function isEmailValid(emailValue) {
 
@@ -80,7 +80,7 @@ export function isEmailValid(emailValue) {
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 export function isPasswordValid(passwordValue) {
 
@@ -102,7 +102,7 @@ export function isPasswordValid(passwordValue) {
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 export function isPasswordVerificationValid(passwordValue, passwordVerificationValue) {
 
@@ -127,7 +127,7 @@ export function isPasswordVerificationValid(passwordValue, passwordVerificationV
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 export function isPhoneNumberValid(phoneNumberValue) {
 
@@ -152,7 +152,7 @@ export function isPhoneNumberValid(phoneNumberValue) {
  * 
  * @returns {boolean} True if validation passes, otherwise false.
  * 
- * @AntonisZks
+ * @author AntonisZks
  */
 export function isGenderValid(maleGenderElement, femaleGenderElement) {
 
