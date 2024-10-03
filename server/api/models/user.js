@@ -138,6 +138,16 @@ async function insertDataIntoDatabase(userData) {
 
 }
 
+async function getUserPosts(userID) {
+
+  const sqlQuery = `SELECT * FROM posts`;
+
+  const results = await executeQuery(sqlQuery, []);
+
+  return results;
+
+}
+
 module.exports = {
   getUserByID, getUserByEmail,
   userExistsWithEmail,
@@ -145,5 +155,6 @@ module.exports = {
   getUserBannerImageByID,
   insertDataIntoDatabase,
   getUserSocialsInfo,
-  getUserConnections
+  getUserConnections,
+  getUserPosts
 };

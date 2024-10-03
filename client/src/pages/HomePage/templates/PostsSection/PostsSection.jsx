@@ -48,11 +48,11 @@ export default function PostsSection(props) {
   return (
     <section className={`${styles.posts_section} ${section_styles.section}`}>
       <PostCreationPanel image_src={userProfileImageURL} userID={userID}/>
-      {/* <div className={styles.posts_list_outer_container}>
-        <UserPost image={ai}/>
-        <UserPost image={group}/>
-        <UserPost image={uoa}/>
-      </div> */}
+      <div className={styles.posts_list_outer_container}>
+        {posts.map((number, index) => (
+          <UserPost key={index} image={ai}/>
+        ))}
+      </div>
     </section>
   )
 

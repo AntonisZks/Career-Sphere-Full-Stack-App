@@ -1,7 +1,7 @@
 const path = require('path');
 const { db_pool } = require("../../config/db_config");
 const { getUserByID, getUserProfileImageByID, getUserBannerImageByID } = require('../models/user');
-const { getUserSocialsInfo, getUserConnections } = require('../models/user');
+const { getUserSocialsInfo, getUserConnections, getUserPosts } = require('../models/user');
 
 
 
@@ -10,7 +10,9 @@ exports.getPosts = async function (request, response) {
 
   const userID = request.query.uid;
 
-  return response.status(200).json({message: userID});
+  const userPosts = await getUserPosts(userID);
+
+  return response.status(200).send(userPosts);
 
 }
 
