@@ -47,7 +47,7 @@ export default function HomePage({ userID }) {
       <div className={styles.sections_outer_container}>
         <div className={styles.sections_inner_container}>
           <LeftSection userID={userID}/>
-          {/*<PostsSection user_data={data}/>*/}
+          <PostsSection userID={userID}/>
           {/*<RightSection/>*/}
         </div>
       </div>

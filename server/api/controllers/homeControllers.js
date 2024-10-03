@@ -4,6 +4,21 @@ const { getUserByID, getUserProfileImageByID, getUserBannerImageByID } = require
 const { getUserSocialsInfo, getUserConnections } = require('../models/user');
 
 
+
+
+exports.getPosts = async function (request, response) {
+
+  const userID = request.query.uid;
+
+  return response.status(200).json({message: userID});
+
+}
+
+
+
+
+
+
 /**
  * Controlls the home page of the application. It receives all the data of the user
  * of the client and sends the appropriate responses according to those data.

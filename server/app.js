@@ -32,11 +32,13 @@ const PORT = process.env.PORT || 8080; // Setup the port of the server
 const authRoutes = require('./api/routes/auth_routes');
 const userRoutes = require('./api/routes/user_routes');
 const imageRoutes = require('./api/routes/image_routes');
+const homeRoutes = require('./api/routes/home_routes');
 
 // Use routes
 app.use('/', authRoutes);
 app.use('/users', userRoutes);
 app.use('/images', imageRoutes);
+app.use('/home', homeRoutes);
 
 
 // Start the server execution
