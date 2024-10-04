@@ -12,12 +12,13 @@ exports.getPosts = async function (request, response) {
 
   const userPosts = await getUserPosts(userID);
 
+  for (let post of userPosts) {
+    post.image_url = `/images/postImages/${post.post_id}`
+  }
+
   return response.status(200).send(userPosts);
 
 }
-
-
-
 
 
 

@@ -140,7 +140,16 @@ async function insertDataIntoDatabase(userData) {
 
 async function getUserPosts(userID) {
 
-  const sqlQuery = `SELECT * FROM posts`;
+  const sqlQuery = `
+    SELECT * FROM posts 
+    WHERE author_id in (
+      SELECT user_id FROM users WHERE user_id = ${userID}
+        UNION
+      SELECT following_id FROM users_follow_users
+      WHERE follower_id = ${userID}
+    )
+    ORDER BY creation_date DESC;
+  `;
 
   const results = await executeQuery(sqlQuery, []);
 

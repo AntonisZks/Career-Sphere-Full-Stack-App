@@ -11,7 +11,7 @@ import './main.css';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage userID={34}/>
+    element: <HomePage userID={31}/>
   },
   {
     path: '/home',

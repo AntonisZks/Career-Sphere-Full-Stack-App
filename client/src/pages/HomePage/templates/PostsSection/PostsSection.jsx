@@ -19,7 +19,7 @@ export default function PostsSection(props) {
 
   useEffect(() => {
     
-    const fetchUserProfileData = async () => {
+    const fetchUserData = async () => {
       try {
 
         const response = await fetch(`http://localhost:8080/users/${userID}/profileImage`);
@@ -39,7 +39,7 @@ export default function PostsSection(props) {
 
     };
 
-    fetchUserProfileData();
+    fetchUserData();
     
   }, []);
 
@@ -50,7 +50,7 @@ export default function PostsSection(props) {
       <PostCreationPanel image_src={userProfileImageURL} userID={userID}/>
       <div className={styles.posts_list_outer_container}>
         {posts.map((number, index) => (
-          <UserPost key={index} image={ai}/>
+          <UserPost key={index} post_data={posts[index]}/>
         ))}
       </div>
     </section>
