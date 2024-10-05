@@ -138,7 +138,7 @@ async function insertDataIntoDatabase(userData) {
 
 }
 
-async function getUserPosts(userID) {
+async function getUserHomePosts(userID) {
 
   const sqlQuery = `
     SELECT * FROM posts 
@@ -165,5 +165,5 @@ module.exports = {
   insertDataIntoDatabase,
   getUserSocialsInfo,
   getUserConnections,
-  getUserPosts
+  getUserHomePosts
 };

@@ -1,16 +1,15 @@
 const path = require('path');
 const { db_pool } = require("../../config/db_config");
 const { getUserByID, getUserProfileImageByID, getUserBannerImageByID } = require('../models/user');
-const { getUserSocialsInfo, getUserConnections, getUserPosts } = require('../models/user');
-
-
+const { getUserSocialsInfo, getUserConnections, getUserHomePosts } = require('../models/user');
+const { getPostLikes,getPostDislikes } = require('../models/post');
 
 
 exports.getPosts = async function (request, response) {
 
   const userID = request.query.uid;
 
-  const userPosts = await getUserPosts(userID);
+  const userPosts = await getUserHomePosts(userID);
 
   for (let post of userPosts) {
     post.image_url = `/images/postImages/${post.post_id}`
@@ -20,6 +19,24 @@ exports.getPosts = async function (request, response) {
 
 }
 
+
+exports.getPostLikes = async function (request, response) {
+
+  const postID = request.params.postID;
+  const likes = await getPostLikes(postID);
+
+  return response.status(200).json({likes});
+
+}
+
+exports.getPostDislikes = async function (request, response) {
+
+  const postID = request.params.postID;
+  const dislikes = await getPostDislikes(postID);
+
+  return response.status(200).json({dislikes});
+
+}
 
 
 /**
