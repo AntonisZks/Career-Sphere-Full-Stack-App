@@ -3,12 +3,24 @@ import styles from './UserPost.module.css'
 import { useEffect, useState } from 'react';
 import AppImage from '../../../../common/components/AppImage/AppImage';
 
-
+/**
+ * Renders the XML code for a user's post. This includes fetching the author's 
+ * profile data, the number of likes, dislikes, and comments, as well as rendering 
+ * the post header, main content, and footer.
+ * 
+ * @param {any} props the properties of the UserPost, including post_data with details such as author_id and post_id
+ * @returns the XML code of the user's post
+ * 
+ * @AntonisZks
+ * @since 1.0.0
+ * @date 07/10/2024
+ */
 export default function UserPost(props) {
 
   const [authorData, setAuthorData] = useState(null);
   const [postLikes, setPostLikes] = useState(0);
   const [postDislikes, setPostDislikes] = useState(0);
+  const [postComments, setPostComments] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,17 +35,19 @@ export default function UserPost(props) {
         const response2 = await fetch(`${baseURL}/users/${props.post_data.author_id}/profileImage`);
         const response3 = await fetch(`${baseURL}/home/posts/${props.post_data.post_id}/likes`);
         const response4 = await fetch(`${baseURL}/home/posts/${props.post_data.post_id}/dislikes`);
+        const response5 = await fetch(`${baseURL}/home/posts/${props.post_data.post_id}/comments`);
         
-
         const result = await response.json();
         const result2 = await response2.json();
         const result3 = await response3.json();
         const result4 = await response4.json();
-
+        const result5 = await response5.json();
+        
         result.profile_image_url = result2.url;
         setAuthorData(result);
         setPostLikes(result3.likes);
         setPostDislikes(result4.dislikes);
+        setPostComments(result5.comments);
   
       } catch (error) {
         console.error(error);
@@ -48,6 +62,7 @@ export default function UserPost(props) {
 
   if (loading) return <div>Loading Post...</div>
 
+  // Render JSX code for the user post with its subcomponents
   return (
     <div className={styles.post_container}>
 
@@ -66,6 +81,7 @@ export default function UserPost(props) {
       <PostFooter
         likes={postLikes}
         dislikes={postDislikes}
+        comments={postComments}
       />
 
     </div>
@@ -73,8 +89,20 @@ export default function UserPost(props) {
 
 }
 
+/**
+ * Renders the XML code of the post header component. This includes the author's 
+ * profile image, name, release date, and action buttons such as "Follow" and "More."
+ * 
+ * @param {any} props the properties of the PostHeader, including authorName and profileImageURL
+ * @returns the XML code for the post header
+ * 
+ * @AntonisZks
+ * @since 1.0.0
+ * @date 07/10/2024
+ */
 function PostHeader(props) {
 
+  // Render JSX code for the header of the post
   return (
     <div className={styles.post_header}>
       <AppImage
@@ -95,6 +123,19 @@ function PostHeader(props) {
 
 }
 
+/**
+ * Renders the main content of the post, which includes the post title, 
+ * description, and an optional image related to the post. A 'read more' 
+ * button is available to expand the description.
+ * 
+ * @param {any} props the properties of the PostMainContent, including the title, 
+ * description, and image_url of the post
+ * @returns the XML code for the main content of the post
+ * 
+ * @AntonisZks
+ * @since 1.0.0
+ * @date 07/10/2024
+ */
 function PostMainContent(props) {
 
   const [title, setTitle] = useState(props.title);
@@ -106,6 +147,7 @@ function PostMainContent(props) {
     description.innerText = props.post_data.description;
   }
 
+  // Render JSX code for the main content of the post
   return (
     <div className={styles.post_main_content}>
       <h1>{title}</h1>
@@ -122,8 +164,21 @@ function PostMainContent(props) {
 
 }
 
+/**
+ * Renders the footer of the post, including buttons for likes, dislikes, 
+ * comments, views, and additional social reactions (like share).
+ * 
+ * @param {any} props the properties of the PostFooter, including likes, 
+ * dislikes, and comments count
+ * @returns the XML code for the footer of the post
+ * 
+ * @AntonisZks
+ * @since 1.0.0
+ * @date 07/10/2024
+ */
 function PostFooter(props) {
 
+  // Render JSX code for the post footer, including reactions and view/comments count
   return (
     <div className={styles.post_footer}>
 
@@ -142,7 +197,7 @@ function PostFooter(props) {
 
       <div className={styles.views_comments_container}>
         <a href="#"><p><b>2K</b> views</p></a>
-        <a href="#"><p><b>482</b> comments</p></a>
+        <a href="#"><p><b>{props.comments}</b> comments</p></a>
       </div>
 
       <div className={styles.react_buttons_container}>

@@ -2,7 +2,7 @@ const path = require('path');
 const { db_pool } = require("../../config/db_config");
 const { getUserByID, getUserProfileImageByID, getUserBannerImageByID } = require('../models/user');
 const { getUserSocialsInfo, getUserConnections, getUserHomePosts } = require('../models/user');
-const { getPostLikes,getPostDislikes } = require('../models/post');
+const { getPostLikes, getPostDislikes, getPostComments } = require('../models/post');
 
 
 exports.getPosts = async function (request, response) {
@@ -35,6 +35,15 @@ exports.getPostDislikes = async function (request, response) {
   const dislikes = await getPostDislikes(postID);
 
   return response.status(200).json({dislikes});
+
+}
+
+exports.getPostComments = async function (request, response) {
+
+  const postID = request.params.postID;
+  const comments = await getPostComments(postID);
+
+  return response.status(200).json({comments});
 
 }
 
