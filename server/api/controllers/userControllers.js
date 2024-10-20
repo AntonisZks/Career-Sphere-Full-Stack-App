@@ -1,4 +1,4 @@
-const { getUserByID, getUserSocialsInfo, getUserConnections } = require('../models/user');
+const { getUserByID, getUserSocialsInfo, getUserConnections, getUserSuggestions } = require('../models/user');
 const { getUserProfileImageByID, getUserBannerImageByID } = require('../models/user');
 
 exports.getUserProfileData = async function (request, response) {
@@ -70,5 +70,25 @@ exports.getConnections = async function (request, response) {
   }
 
   return response.status(200).send(connections);
+
+}
+
+exports.getSuggestions = async function (request, response) {
+  
+  const suggestions = await getUserSuggestions(request.params.userID);
+
+  for (let suggestion of suggestions) {
+
+    const profileImage = await getUserProfileImageByID(suggestion.user_id);
+    suggestion.profile_image_url = (profileImage === null)
+      ? null
+      : `/images/profileImages/${profileImage.image_id}`;
+
+    const followers = await getUserSocialsInfo(suggestion.user_id, "followers");
+    suggestion.followers = followers;
+
+  }
+
+  return response.status(200).send(suggestions);
 
 }

@@ -10,62 +10,57 @@ import user3 from "../../../../assets/images/user3.jpg";
 import user4 from "../../../../assets/images/user4.jpg";
 import user5 from "../../../../assets/images/user5.jpg";
 import user6 from "../../../../assets/images/user6.jpg";
+import { useEffect, useState } from "react";
 
-export default function RightSection() {
+export default function RightSection(props) {
+
+  const [suggestions, setSuggestions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+
+    const fetchSuggestions = async () => {
+
+      const baseURL = 'http://localhost:8080';
+
+      try {
+
+        const response = await fetch(`${baseURL}/users/${props.userID}/suggestions`, { method: 'GET' });
+        const result = await response.json();
+        setSuggestions(result);
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+
+    };
+
+    fetchSuggestions();
+
+  })
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
   return (
     <aside className={`${styles.suggestions_section} ${section_styles.section}`}>
       <section className={styles.outer_container}>
         <div className={`${styles.suggestions_container} ${styles.panel}`}>
           <h1 className={styles.title}>Suggested Accounts</h1>
           <ul>
-            <li>
-              <AccountSuggestionSmall
-                image={user}
-                firstname="James"
-                lastname="Elijah"
-                followers="137.801"
-              />
-            </li>
-            <li>
-              <AccountSuggestionSmall
-                image={user2}
-                firstname="Antonis"
-                lastname="Zikas"
-                followers="255.933"
-              />
-            </li>
-            <li>
-              <AccountSuggestionSmall
-                image={user3}
-                firstname="Liam"
-                lastname="Noam"
-                followers="121.360"
-              />
-            </li>
-            <li>
-              <AccountSuggestionSmall
-                image={user4}
-                firstname="Ava"
-                lastname="Evelyn"
-                followers="231.895"
-              />
-            </li>
-            <li>
-              <AccountSuggestionSmall
-                image={user5}
-                firstname="Mia"
-                lastname="Olivia"
-                followers="163.023"
-              />
-            </li>
-            <li>
-              <AccountSuggestionSmall
-                image={user6}
-                firstname="Robert"
-                lastname="Ralph"
-                followers="211.901"
-              />
-            </li>
+            {suggestions.map((number, index) => (
+              <li key={index}>
+                <AccountSuggestionSmall 
+                  image={suggestions[index].profile_image_url}
+                  firstname={suggestions[index].first_name}
+                  lastname={suggestions[index].last_name}
+                  followers={suggestions[index].followers}
+                />
+              </li>
+            ))}
           </ul>
           <p className={`${styles.show_more_message} ${styles.panel_link}`}>
             <a href="#">Show More</a>

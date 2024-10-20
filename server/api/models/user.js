@@ -113,6 +113,36 @@ async function getUserConnections(userID) {
 
 }
 
+async function getUserSuggestions(userID) {
+
+  const sqlQuery = `
+    SELECT * FROM users
+    WHERE user_id in (
+      SELECT user_id FROM users
+      WHERE user_id IN (
+        SELECT follower_id AS followers FROM users_follow_users
+        WHERE following_id IN (
+          SELECT following_id FROM users_follow_users 
+          WHERE follower_id = ?
+        )
+        INTERSECT
+        SELECT following_id AS following FROM users_follow_users
+        WHERE follower_id IN (
+          SELECT following_id FROM users_follow_users 
+          WHERE follower_id = ?
+        )
+      )
+      EXCEPT
+      SELECT following_id FROM users_follow_users
+      WHERE follower_id = ?
+    )
+    AND user_id != ?;
+  `
+  const results = await executeQuery(sqlQuery, [userID, userID, userID, userID]);
+  return results;
+
+}
+
 async function insertDataIntoDatabase(userData) {
 
   const sqlQuery = `
@@ -165,5 +195,6 @@ module.exports = {
   insertDataIntoDatabase,
   getUserSocialsInfo,
   getUserConnections,
+  getUserSuggestions,
   getUserHomePosts
 };
